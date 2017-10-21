@@ -1,38 +1,45 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-//using TriangleCompiler.SyntacticAnalyser;
 
-namespace TriangleCompiler.SyntacticAnalyser
-{
-	public class Scanner : IEnumerable<Token>
-	{
+namespace TriangleCompiler.SyntacticAnalyser {
+    
+	public class Scanner : IEnumerable<Token> {
+        
 		SourceFile _source;
 
 		StringBuilder _currentSpelling;
 
 		bool _debug;
 
-		public Scanner(SourceFile source)
-		{
+		static readonly Dictionary<char, TokenKind> simbols = new Dictionary<char, TokenKind>(){
+			{'.',  TokenKind.Dot},
+			{';',  TokenKind.Semicolon},
+			{',',  TokenKind.Comma},
+			{'~',  TokenKind.Is},
+			{'(',  TokenKind.LeftParen},
+			{')',  TokenKind.RightParen},
+			{'[',  TokenKind.LeftBracket},
+			{']',  TokenKind.RightBracket},
+			{'{',  TokenKind.LeftCurly},
+			{'}',  TokenKind.RightCurly},
+		};
+
+		public Scanner(SourceFile source) {
 			_source = source;
 			_source.Reset();
 			_currentSpelling = new StringBuilder();
 		}
 
-		public Scanner EnableDebugging()
-		{
+		public Scanner EnableDebugging() {
 			_debug = true;
 			return this;
 		}
-		public IEnumerator<Token> GetEnumerator()
-		{
-			while (true)
-			{
+
+		public IEnumerator<Token> GetEnumerator() {
+			while (true) {
                 int c = _source.Current;
-				while (c == '!' || c == ' ' || c == '\t' || c == '\n')
-				{
+				while (c == '!' || c == ' ' || c == '\t' || c == '\n') {
 					ScanSeparator();
                     c = _source.Current;
 				}
@@ -54,17 +61,14 @@ namespace TriangleCompiler.SyntacticAnalyser
 			}
 		}
 
-		System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
-		{
+		System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() {
 			return GetEnumerator();
 		}
 
 
 		// Appends the current character to the current token, and gets
-		//the next character from the source program.
-
-		void TakeIt()
-		{
+		// the next character from the source program.
+		void TakeIt() {
 			_currentSpelling.Append((char)_source.Current);
 			_source.MoveNext();
 		}
@@ -72,18 +76,19 @@ namespace TriangleCompiler.SyntacticAnalyser
 
 		//Skip a single separator.
 
-		void ScanSeparator()
-		{
+		void ScanSeparator() {
             if(_source.Current == '!'){
 				_source.SkipRestOfLine();
 				_source.MoveNext();
-            } else{
+            } else {
                 _source.MoveNext();
             }
 
 		}
-		TokenKind ScanToken()
-        {
+
+
+        TokenKind ScanToken() {
+            
             if (_source.Current == -1)
                 return TokenKind.EndOfText;
 
@@ -108,6 +113,30 @@ namespace TriangleCompiler.SyntacticAnalyser
                 return TokenKind.Operator;
             }
 
+            // if it's a ' take it and next and check if another ' is present
+            if(_source.Current == '\''){
+                TakeIt(); TakeIt();
+                if (_source.Current == '\'') {
+                    TakeIt();
+                    return TokenKind.CharLiteral;
+                } else return TokenKind.Error;
+            }
+
+            // check if it's a : and if it's followed by =
+            if(_source.Current == ':'){
+                TakeIt();
+                if (_source.Current == '=') {
+                    TakeIt();
+                    return TokenKind.Becomes;
+                } return TokenKind.Colon;
+            }
+
+            if(simbols.ContainsKey((char)_source.Current)){
+                TokenKind k = simbols[(char)_source.Current];
+                TakeIt();
+                return k;
+            }
+
             else {
                 TakeIt();
                 return TokenKind.Error;
@@ -115,20 +144,14 @@ namespace TriangleCompiler.SyntacticAnalyser
 
 		}
 
-		bool IsLetter(int ch)
-		{
-			return ('a' <= ch && ch <= 'z') || ('A' <= ch && ch <= 'Z');
-		}
+		bool IsLetter(int ch) {
+			return ('a' <= ch && ch <= 'z') || ('A' <= ch && ch <= 'Z'); }
 
-		bool IsDigit(int ch)
-		{
-			return '0' <= ch && ch <= '9';
-		}
+		bool IsDigit(int ch) {
+			return '0' <= ch && ch <= '9'; }
 
-		bool IsOperator(int ch)
-		{
-			switch (ch)
-			{
+		bool IsOperator(int ch) {
+			switch (ch) {
 				case '+':
 				case '-':
 				case '*':

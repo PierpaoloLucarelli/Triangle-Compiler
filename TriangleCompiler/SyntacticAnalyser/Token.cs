@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace TriangleCompiler.SyntacticAnalyser
-{
+namespace TriangleCompiler.SyntacticAnalyser {
 	public class Token
 	{
 		// Lookup table of reserved words used to screen tokens.
@@ -21,9 +20,8 @@ namespace TriangleCompiler.SyntacticAnalyser
 		// Creates a token
 		public Token(TokenKind kind, string spelling)
 		{
-
 			Kind = kind;
-			if (kind == TokenKind.Identifier)
+            if (kind == TokenKind.Identifier)
 			{
 				TokenKind match;
 				if (ReservedWords.TryGetValue(spelling, out match))
@@ -31,7 +29,6 @@ namespace TriangleCompiler.SyntacticAnalyser
 					Kind = match;
 				}
 			}
-
 			Spelling = spelling;
 		}
 
