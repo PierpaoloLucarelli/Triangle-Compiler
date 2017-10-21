@@ -30,9 +30,11 @@ namespace TriangleCompiler.SyntacticAnalyser
 		{
 			while (true)
 			{
-				while (_source.Current == '!' || _source.Current == ' ' || _source.Current == '\t' || _source.Current == '\n')
+                int c = _source.Current;
+				while (c == '!' || c == ' ' || c == '\t' || c == '\n')
 				{
 					ScanSeparator();
+                    c = _source.Current;
 				}
 
 				_currentSpelling.Clear();
@@ -45,9 +47,7 @@ namespace TriangleCompiler.SyntacticAnalyser
 
 				var token = new Token(kind, _currentSpelling.ToString());
 				if (_debug)
-				{
 					Console.WriteLine(token);
-				}
 
 				yield return token;
 				if (token.Kind == TokenKind.EndOfText) { break; }
@@ -74,35 +74,41 @@ namespace TriangleCompiler.SyntacticAnalyser
 
 		void ScanSeparator()
 		{
-			switch (_source.Current)
-			{
-				case '!':
-					_source.SkipRestOfLine();
-					_source.MoveNext();
-					break;
-				case ' ':
-				case '\n':
-				case '\r':
-				case '\t':
-					_source.MoveNext();
-					break;
-
-			}
+            if(_source.Current == '!'){
+				_source.SkipRestOfLine();
+				_source.MoveNext();
+            } else{
+                _source.MoveNext();
+            }
 
 		}
-
 		TokenKind ScanToken()
-		{
-            if(_source.Current == -1){
+        {
+            if (_source.Current == -1)
                 return TokenKind.EndOfText;
-            } else if(IsDigit(_source.Current)){
-                do
-                {
-                    TakeIt();
-                } while (IsDigit(_source.Current));
-                return TokenKind.IntLiteral;
-            } else{
 
+            // if current is a letter accept all next letters and digits in token
+            if(IsLetter(_source.Current)){
+                do TakeIt();
+                while (IsLetter(_source.Current) || IsDigit(_source.Current));
+                return TokenKind.Identifier;
+            }
+
+            // if its a digit also add next digita to current token
+            if (IsDigit(_source.Current)){
+                do TakeIt();
+                while (IsDigit(_source.Current));
+                return TokenKind.IntLiteral;
+            }
+
+            // if it's an operator take it
+            if(IsOperator(_source.Current)){
+                do TakeIt();
+                while (IsOperator(_source.Current));
+                return TokenKind.Operator;
+            }
+
+            else {
                 TakeIt();
                 return TokenKind.Error;
             }

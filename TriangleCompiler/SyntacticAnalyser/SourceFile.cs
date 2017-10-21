@@ -1,9 +1,10 @@
 ﻿using System;
 using System.IO;
+using System.Collections.Generic;
 
 namespace TriangleCompiler.SyntacticAnalyser
 {
-    public class SourceFile
+    public class SourceFile : IEnumerator<int>
     {
 		// file will be stored here
         StreamReader _source;
@@ -20,6 +21,8 @@ namespace TriangleCompiler.SyntacticAnalyser
 		public bool IsValid { get { return _source != null; } }
 
 		public int Current { get { return _buffer == null ? -1 : _buffer[_index]; } }
+
+        object System.Collections.IEnumerator.Current { get { return Current; } }
 
 		
         // Constructor
@@ -82,6 +85,22 @@ namespace TriangleCompiler.SyntacticAnalyser
 			return _buffer != null;
 		}
 
+		public void Dispose()
+		{
+			Dispose(true);
+			GC.SuppressFinalize(this);
+		}
 
+		protected virtual void Dispose(bool disposing)
+		{
+			if (disposing)
+			{
+				if (_source != null)
+				{
+					_source.Dispose();
+					_source = null;
+				}
+			}
+		}
     }
 }
