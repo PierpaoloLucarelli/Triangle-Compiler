@@ -4,8 +4,7 @@ using System.Text;
 using System.Linq;
 
 namespace TriangleCompiler.SyntacticAnalyser {
-    
-	public class Scanner : IEnumerable<Token> {
+    public class Scanner : IEnumerable<Token> {
         
 		SourceFile _source;
 
