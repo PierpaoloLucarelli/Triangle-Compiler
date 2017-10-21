@@ -8,3 +8,4 @@
 /Users/plucarelli/Projects/TriangleCompiler/TriangleCompiler/obj/Debug/netcoreapp2.0/TriangleCompiler.AssemblyInfo.cs
 /Users/plucarelli/Projects/TriangleCompiler/TriangleCompiler/obj/Debug/netcoreapp2.0/TriangleCompiler.dll
 /Users/plucarelli/Projects/TriangleCompiler/TriangleCompiler/obj/Debug/netcoreapp2.0/TriangleCompiler.pdb
+/Users/plucarelli/Projects/TriangleCompiler/TriangleCompiler/obj/Debug/netcoreapp2.0/TriangleCompiler.csprojResolveAssemblyReference.cache

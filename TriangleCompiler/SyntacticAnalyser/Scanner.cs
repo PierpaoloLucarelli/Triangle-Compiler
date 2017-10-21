@@ -6,87 +6,73 @@ using System.Linq;
 namespace TriangleCompiler.SyntacticAnalyser {
     public class Scanner : IEnumerable<Token> {
         
-		SourceFile _source;
+        SourceFile _source;
 
-		StringBuilder _currentSpelling;
+        StringBuilder _currentSpelling;
 
-		bool _debug;
+        bool _debug;
 
-		static readonly Dictionary<char, TokenKind> simbols = new Dictionary<char, TokenKind>(){
-			{'.',  TokenKind.Dot},
-			{';',  TokenKind.Semicolon},
-			{',',  TokenKind.Comma},
-			{'~',  TokenKind.Is},
-			{'(',  TokenKind.LeftParen},
-			{')',  TokenKind.RightParen},
-			{'[',  TokenKind.LeftBracket},
-			{']',  TokenKind.RightBracket},
-			{'{',  TokenKind.LeftCurly},
-			{'}',  TokenKind.RightCurly},
-		};
 
-        char[] operators = { '+', '-', '*', '/', '=', '<', '>', '\\', '&', '@', '%', '^', '?' };
+        public Scanner(SourceFile source) {
+        	_source = source;
+        	_source.Reset();
+        	_currentSpelling = new StringBuilder();
+        }   
 
-		public Scanner(SourceFile source) {
-			_source = source;
-			_source.Reset();
-			_currentSpelling = new StringBuilder();
-		}
+        public Scanner EnableDebugging() {
+        	_debug = true;
+        	return this;
+        }
 
-		public Scanner EnableDebugging() {
-			_debug = true;
-			return this;
-		}
-
-		public IEnumerator<Token> GetEnumerator() {
-			while (true) {
+        public IEnumerator<Token> GetEnumerator() {
+        	while (true) {
                 int c = _source.Current;
-				while (c == '!' || c == ' ' || c == '\t' || c == '\n') {
-					ScanSeparator();
+        		while (c == '!' || c == ' ' || c == '\t' || c == '\n') {
+        			ScanSeparator();
                     c = _source.Current;
-				}
+        		}
 
-				_currentSpelling.Clear();
+        		_currentSpelling.Clear();
 
-				//var startLocation = new Location(_source.Location.line_index, _source.Location.line_number);
-				var kind = ScanToken();
-				//var endLocation = new Location(_source.Location.line_index, _source.Location.line_number);
-				//var position = new SourcePosition(startLocation, endLocation);
-				//Console.WriteLine(position);
+        		//var startLocation = new Location(_source.Location.line_index, _source.Location.line_number);
+        		var kind = ScanToken();
+        		//var endLocation = new Location(_source.Location.line_index, _source.Location.line_number);
+        		//var position = new SourcePosition(startLocation, endLocation);
+        		//Console.WriteLine(position);
 
-				var token = new Token(kind, _currentSpelling.ToString());
-				if (_debug)
-					Console.WriteLine(token);
+        		var token = new Token(kind, _currentSpelling.ToString());
+        		if (_debug)
+        			Console.WriteLine(token);
 
-				yield return token;
-				if (token.Kind == TokenKind.EndOfText) { break; }
-			}
-		}
+        		yield return token;
+        		if (token.Kind == TokenKind.EndOfText) { break; }
+        	}
+        }
 
-		System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() {
-			return GetEnumerator();
-		}
-
-
-		// Appends the current character to the current token, and gets
-		// the next character from the source program.
-		void TakeIt() {
-			_currentSpelling.Append((char)_source.Current);
-			_source.MoveNext();
-		}
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() {
+        	return GetEnumerator();
+        }
 
 
-		//Skip a single separator.
+        // Appends the current character to the current token, and gets
+        // the next character from the source program.
+        void TakeIt() {
+        	_currentSpelling.Append((char)_source.Current);
+        	_source.MoveNext();
+        }
 
-		void ScanSeparator() {
+
+        //Skip a single separator.
+
+        void ScanSeparator() {
             if(_source.Current == '!'){
-				_source.SkipRestOfLine();
-				_source.MoveNext();
+        		_source.SkipRestOfLine();
+        		_source.MoveNext();
             } else {
                 _source.MoveNext();
             }
 
-		}
+        }
 
 
         TokenKind ScanToken() {
@@ -133,8 +119,8 @@ namespace TriangleCompiler.SyntacticAnalyser {
                 } return TokenKind.Colon;
             }
 
-            if(simbols.ContainsKey((char)_source.Current)){
-                TokenKind k = simbols[(char)_source.Current];
+            if(Utils.simbols.ContainsKey((char)_source.Current)){
+                TokenKind k = Utils.simbols[(char)_source.Current];
                 TakeIt();
                 return k;
             }
@@ -144,17 +130,17 @@ namespace TriangleCompiler.SyntacticAnalyser {
                 return TokenKind.Error;
             }
 
-		}
+        }
 
-		bool IsLetter(int ch) {
-			return ('a' <= ch && ch <= 'z') || ('A' <= ch && ch <= 'Z'); }
+        bool IsLetter(int ch) {
+        	return ('a' <= ch && ch <= 'z') || ('A' <= ch && ch <= 'Z'); }
 
-		bool IsDigit(int ch) {
-			return '0' <= ch && ch <= '9'; }
+        bool IsDigit(int ch) {
+        	return '0' <= ch && ch <= '9'; }
 
         bool IsOperator(int ch)
         {
-            return (Array.IndexOf(operators, (char)ch) > -1);
-		}
+            return (Array.IndexOf(Utils.operators, (char)ch) > -1);
+        }
 	}
 }
