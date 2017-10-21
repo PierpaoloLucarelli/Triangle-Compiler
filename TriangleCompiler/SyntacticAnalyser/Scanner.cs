@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace TriangleCompiler.SyntacticAnalyser {
     
@@ -24,6 +25,8 @@ namespace TriangleCompiler.SyntacticAnalyser {
 			{'{',  TokenKind.LeftCurly},
 			{'}',  TokenKind.RightCurly},
 		};
+
+        char[] operators = { '+', '-', '*', '/', '=', '<', '>', '\\', '&', '@', '%', '^', '?' };
 
 		public Scanner(SourceFile source) {
 			_source = source;
@@ -150,26 +153,9 @@ namespace TriangleCompiler.SyntacticAnalyser {
 		bool IsDigit(int ch) {
 			return '0' <= ch && ch <= '9'; }
 
-		bool IsOperator(int ch) {
-			switch (ch) {
-				case '+':
-				case '-':
-				case '*':
-				case '/':
-				case '=':
-				case '<':
-				case '>':
-				case '\\':
-				case '&':
-				case '@':
-				case '%':
-				case '^':
-				case '?':
-					return true;
-
-				default:
-					return false;
-			}
+        bool IsOperator(int ch)
+        {
+            return (Array.IndexOf(operators, (char)ch) > -1);
 		}
 	}
 }
