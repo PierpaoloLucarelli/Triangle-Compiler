@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Linq;
 
 namespace TriangleCompiler.SyntacticAnalyser {
     public class Scanner : IEnumerable<Token> {
@@ -25,7 +24,7 @@ namespace TriangleCompiler.SyntacticAnalyser {
         }
 
         public IEnumerator<Token> GetEnumerator() {
-        	while (true) {
+            while (true) {
                 int c = _source.Current;
         		while (c == '!' || c == ' ' || c == '\t' || c == '\n') {
         			ScanSeparator();
@@ -62,19 +61,17 @@ namespace TriangleCompiler.SyntacticAnalyser {
         }
 
 
-        //Skip a single separator.
-
+        //Skip a single separator or line if comment
         void ScanSeparator() {
             if(_source.Current == '!'){
         		_source.SkipRestOfLine();
         		_source.MoveNext();
-            } else {
+            } else 
                 _source.MoveNext();
-            }
-
         }
 
-
+        // group sequence of characters into recognized tokens
+        // return the token kind
         TokenKind ScanToken() {
             
             if (_source.Current == -1)

@@ -1,7 +1,16 @@
 ﻿<Properties StartupConfiguration="{F9449CFE-3E3B-4248-99E7-79A089963FBD}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="TriangleCompiler/Program.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="TriangleCompiler/SyntacticAnalyser/ParserCommand.cs">
     <Files>
-      <File FileName="TriangleCompiler/Program.cs" Line="13" Column="1" />
+      <File FileName="TriangleCompiler/Compiler.cs" Line="30" Column="7" />
+      <File FileName="TriangleCompiler/SyntacticAnalyser/Scanner.cs" Line="26" Column="48" />
+      <File FileName="TriangleCompiler/SyntacticAnalyser/Token.cs" Line="11" Column="69" />
+      <File FileName="TriangleCompiler/SyntacticAnalyser/TokenKind.cs" Line="22" Column="2" />
+      <File FileName="TriangleCompiler/SyntacticAnalyser/SourceFile.cs" Line="25" Column="16" />
+      <File FileName="TriangleCompiler/test.tri" Line="14" Column="4" />
+      <File FileName="TriangleCompiler/SyntacticAnalyser/Utils.cs" Line="19" Column="17" />
+      <File FileName="TriangleCompiler/SyntacticAnalyser/ParserCommon.cs" Line="29" Column="10" />
+      <File FileName="TriangleCompiler/SyntacticAnalyser/ParserProgram.cs" Line="14" Column="19" />
+      <File FileName="TriangleCompiler/SyntacticAnalyser/ParserCommand.cs" Line="17" Column="9" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
