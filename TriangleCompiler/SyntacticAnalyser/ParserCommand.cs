@@ -15,7 +15,7 @@
 		}
 
 
-		/// Parses the single command
+		// Parses the single command
 
 		void ParseSingleCommand()
 		{
@@ -25,39 +25,28 @@
 
 				case TokenKind.Identifier:
 					{
-						ParseIdentifier();
-						//Accept(TokenKind.Becomes);
-						//ParseExpression();
+                        ParseVname();
+						if (_currentToken.Kind == TokenKind.Becomes)
+						{
+							AcceptIt();
+							ParseExpression();
+						}
+						else if (_currentToken.Kind == TokenKind.LeftParen)
+						{
+							AcceptIt();
+							ParseExpression();
+							Accept(TokenKind.RightParen);
+						}
 						break;
 
-					}
-
-				case TokenKind.Begin:
-					{
-						AcceptIt();
-						ParseCommand();
-						break;
-					}
-				case TokenKind.End:
-					{
-						AcceptIt();
-						break;
 					}
 				case TokenKind.If:
 					{
 						AcceptIt();
 						ParseExpression();
-						break;
-					}
-				case TokenKind.Then:
-					{
-						AcceptIt();
+						Accept(TokenKind.Then);
 						ParseSingleCommand();
-						break;
-					}
-				case TokenKind.Else:
-					{
-						AcceptIt();
+						Accept(TokenKind.Else);
 						ParseSingleCommand();
 						break;
 					}
@@ -65,11 +54,7 @@
 					{
 						AcceptIt();
 						ParseExpression();
-						break;
-					}
-				case TokenKind.Do:
-					{
-						AcceptIt();
+						Accept(TokenKind.Do);
 						ParseSingleCommand();
 						break;
 					}
@@ -77,19 +62,21 @@
 					{
 						AcceptIt();
 						ParseDeclaration();
+						Accept(TokenKind.In);
+						ParseSingleCommand();
 						break;
 					}
-				case TokenKind.In:
+				case TokenKind.Begin:
 					{
 						AcceptIt();
-						ParseSingleCommand();
+						ParseCommand();
+						Accept(TokenKind.End);
 						break;
 					}
 
 				default:
 					System.Console.WriteLine("error");
 					break;
-
 			}
 		}
 	}
