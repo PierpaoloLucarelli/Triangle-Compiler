@@ -11,7 +11,7 @@ namespace TriangleCompiler.SyntacticAnalyser
 
         void ParseIntLiteral()
         {
-            System.Console.WriteLine("parsing int literal");
+            System.Console.WriteLine("parsing integer");
             Accept(TokenKind.IntLiteral);
         }
 

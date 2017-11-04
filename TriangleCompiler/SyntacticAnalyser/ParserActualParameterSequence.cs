@@ -9,12 +9,17 @@ namespace TriangleCompiler.SyntacticAnalyser
         void ParseActualParameterSequence()
         {
             System.Console.WriteLine("parsing actual parameter sequence");
-            ParseActualParameter();
-            while (_currentToken.Kind == TokenKind.Comma)
+            // if current token if right braket, we don't prase parameter sequence
+            if (_currentToken.Kind != TokenKind.RightParen)
             {
-                AcceptIt();
                 ParseActualParameter();
+                while (_currentToken.Kind == TokenKind.Comma)
+                {
+                    AcceptIt();
+                    ParseActualParameter();
+                }
             }
+
         }
 
         void ParseActualParameter()
@@ -28,11 +33,17 @@ namespace TriangleCompiler.SyntacticAnalyser
                         ParseVname();
                         break;
                     }
-                default:
+
+                case TokenKind.Identifier:
+                case TokenKind.IntLiteral:
+                case TokenKind.CharLiteral:
+                case TokenKind.Operator:
+                case TokenKind.LeftParen:
                     {
                         ParseExpression();
                         break;
                     }
+
             }            
         } 
     }

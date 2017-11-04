@@ -25,7 +25,9 @@ namespace TriangleCompiler.SyntacticAnalyser
 				//_previousLocation = token.Start;
 				_tokens.MoveNext();
 				_currentToken = _tokens.Current;
-			}
+            } else{
+                System.Console.WriteLine("Error: Expected :" + expectedKind + " got :" + _currentToken);
+            }
         }
 
 		// Just Fetches the next token from the source file.

@@ -4,9 +4,6 @@ let
 in
 begin
   if (n>0) /\ (n<=MAX) then
-    while n > 0 do 
-    begin
-            n := n-1
-        end
-    else
+    while n > 0 do begin
+      n := n-1
 end

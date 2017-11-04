@@ -19,7 +19,6 @@
 
 		void ParseSingleCommand()
 		{
-            System.Console.WriteLine(_currentToken.Kind);
             System.Console.WriteLine("parsing single command");
 			switch (_currentToken.Kind)
 			{
@@ -35,7 +34,7 @@
 						else if (_currentToken.Kind == TokenKind.LeftParen)
 						{
 							AcceptIt();
-							ParseExpression();
+                            ParseActualParameterSequence();
 							Accept(TokenKind.RightParen);
 						}
 						break;
@@ -83,7 +82,6 @@
                     }
                 default:
 					System.Console.WriteLine("ERROR: Error in parsing command");
-                    System.Console.WriteLine(_currentToken.Kind);
                     break;
 			}
 		}

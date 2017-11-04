@@ -5,7 +5,7 @@ namespace TriangleCompiler.SyntacticAnalyser
 	{
 		void ParseExpression()
 		{
-			System.Console.WriteLine("Parsing expression");
+			System.Console.WriteLine("parsing expression");
             switch(_currentToken.Kind){
                 case TokenKind.Let:{
                         AcceptIt();
@@ -83,9 +83,11 @@ namespace TriangleCompiler.SyntacticAnalyser
                         Accept(TokenKind.RightParen);
                         break;
                     }
-				default:
-					System.Console.WriteLine("error");
-					break;
+                default:
+                    {
+                        System.Console.WriteLine("error in parsing primary expression");
+                        break;
+                    }
 			}
 		}
 

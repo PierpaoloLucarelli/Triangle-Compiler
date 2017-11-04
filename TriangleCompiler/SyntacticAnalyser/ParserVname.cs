@@ -5,7 +5,7 @@ namespace TriangleCompiler.SyntacticAnalyser
     {
         void ParseVname()
         {
-            System.Console.WriteLine("Parsing variable name");
+            System.Console.WriteLine("parsing variable name");
             ParseIdentifier();
         }
 

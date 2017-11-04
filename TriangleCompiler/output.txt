@@ -1,0 +1,107 @@
+Running Triangle Compiler
+Kind=Let, spelling="let"
+Kind=Const, spelling="const"
+Kind=Identifier, spelling="MAX"
+Kind=Is, spelling="~"
+Kind=IntLiteral, spelling="10"
+Kind=Semicolon, spelling=";"
+Kind=Var, spelling="var"
+Kind=Identifier, spelling="n"
+Kind=Colon, spelling=":"
+Kind=Identifier, spelling="Integer"
+Kind=In, spelling="in"
+Kind=Begin, spelling="begin"
+Kind=If, spelling="if"
+Kind=LeftParen, spelling="("
+Kind=Identifier, spelling="n"
+Kind=Operator, spelling=">"
+Kind=IntLiteral, spelling="0"
+Kind=RightParen, spelling=")"
+Kind=Operator, spelling="/\"
+Kind=LeftParen, spelling="("
+Kind=Identifier, spelling="n"
+Kind=Operator, spelling="<="
+Kind=Identifier, spelling="MAX"
+Kind=RightParen, spelling=")"
+Kind=Then, spelling="then"
+Kind=While, spelling="while"
+Kind=Identifier, spelling="n"
+Kind=Operator, spelling=">"
+Kind=IntLiteral, spelling="0"
+Kind=Do, spelling="do"
+Kind=Begin, spelling="begin"
+Kind=Identifier, spelling="n"
+Kind=Becomes, spelling=":="
+Kind=Identifier, spelling="n"
+Kind=Operator, spelling="-"
+Kind=IntLiteral, spelling="1"
+Kind=End, spelling="end"
+Kind=Else, spelling="else"
+Kind=End, spelling="end"
+Kind=EndOfText, spelling=""
+
+
+Parsing program
+parsing command
+Let
+parsing single command
+parsing declaration
+parsing single declaration
+parsing identifier
+Parsing expression
+parsing secondary expression
+parsing primary expression
+parsing int literal
+parsing single declaration
+parsing identifier
+parsing type denoter
+parsing identifier
+Begin
+parsing single command
+parsing command
+If
+parsing single command
+Parsing expression
+parsing secondary expression
+parsing primary expression
+Parsing expression
+parsing secondary expression
+parsing primary expression
+parsing identifier
+parsing operator
+parsing primary expression
+parsing int literal
+parsing operator
+parsing primary expression
+Parsing expression
+parsing secondary expression
+parsing primary expression
+parsing identifier
+parsing operator
+parsing primary expression
+parsing identifier
+While
+parsing single command
+Parsing expression
+parsing secondary expression
+parsing primary expression
+parsing identifier
+parsing operator
+parsing primary expression
+parsing int literal
+Begin
+parsing single command
+parsing command
+Identifier
+parsing single command
+Parsing variable name
+parsing identifier
+Parsing expression
+parsing secondary expression
+parsing primary expression
+parsing identifier
+parsing operator
+parsing primary expression
+parsing int literal
+End
+parsing single command
