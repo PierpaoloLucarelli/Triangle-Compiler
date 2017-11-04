@@ -19,10 +19,11 @@
 
 		void ParseSingleCommand()
 		{
-			System.Console.WriteLine("parsing single command");
+            System.Console.WriteLine(_currentToken.Kind);
+            System.Console.WriteLine("parsing single command");
 			switch (_currentToken.Kind)
 			{
-
+                
 				case TokenKind.Identifier:
 					{
                         ParseVname();
@@ -60,7 +61,7 @@
 					}
 				case TokenKind.Let:
 					{
-						AcceptIt();
+                        AcceptIt();
 						ParseDeclaration();
 						Accept(TokenKind.In);
 						ParseSingleCommand();
@@ -69,14 +70,21 @@
 				case TokenKind.Begin:
 					{
 						AcceptIt();
-						ParseCommand();
+                        ParseCommand();
 						Accept(TokenKind.End);
 						break;
 					}
-
-				default:
-					System.Console.WriteLine("error");
-					break;
+                case TokenKind.Semicolon:
+                case TokenKind.End:
+                case TokenKind.Else:
+                case TokenKind.EndOfText:
+                    {
+                        break;
+                    }
+                default:
+					System.Console.WriteLine("ERROR: Error in parsing command");
+                    System.Console.WriteLine(_currentToken.Kind);
+                    break;
 			}
 		}
 	}

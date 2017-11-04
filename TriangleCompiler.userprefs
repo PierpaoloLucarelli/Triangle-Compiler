@@ -1,11 +1,11 @@
 ﻿<Properties StartupConfiguration="{F9449CFE-3E3B-4248-99E7-79A089963FBD}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="TriangleCompiler/SyntacticAnalyser/ParserVname.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="TriangleCompiler/SyntacticAnalyser/ParserTerminals.cs">
     <Files>
-      <File FileName="TriangleCompiler/SyntacticAnalyser/ParserCommand.cs" Line="26" Column="31" />
-      <File FileName="TriangleCompiler/SyntacticAnalyser/ParserProgram.cs" Line="15" Column="4" />
+      <File FileName="TriangleCompiler/SyntacticAnalyser/ParserCommand.cs" Line="1" Column="1" />
+      <File FileName="TriangleCompiler/SyntacticAnalyser/ParserProgram.cs" Line="1" Column="1" />
       <File FileName="TriangleCompiler/SyntacticAnalyser/ParserCommon.cs" Line="14" Column="30" />
-      <File FileName="TriangleCompiler/SyntacticAnalyser/ParserTerminals.cs" Line="5" Column="3" />
-      <File FileName="TriangleCompiler/SyntacticAnalyser/ParserExpression.cs" Line="8" Column="31" />
+      <File FileName="TriangleCompiler/SyntacticAnalyser/ParserTerminals.cs" Line="1" Column="1" />
+      <File FileName="TriangleCompiler/SyntacticAnalyser/ParserExpression.cs" Line="1" Column="1" />
       <File FileName="TriangleCompiler/SyntacticAnalyser/ParserVname.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>

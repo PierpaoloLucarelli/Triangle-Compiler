@@ -9,19 +9,22 @@ namespace TriangleCompiler.SyntacticAnalyser
 			Accept(TokenKind.Identifier);
 		}
 
-		void ParseIntLiteral()
-		{
-			System.Console.WriteLine("parsing int literal");
-			Accept(TokenKind.IntLiteral);
-		}
+        void ParseIntLiteral()
+        {
+            System.Console.WriteLine("parsing int literal");
+            Accept(TokenKind.IntLiteral);
+        }
 
+        void ParseOperator()
+        {
+            System.Console.WriteLine("parsing operator");
+            Accept(TokenKind.Operator);
+        }
 
-
-		void ParseTypeDenoter()
-		{
-			System.Console.WriteLine("parsing type denoter");
-			ParseIdentifier();
-		}
+        void ParseCharLiteral() {
+            System.Console.WriteLine("parsing char literal");
+            Accept(TokenKind.CharLiteral);
+        }
 
 	}
 }

@@ -6,12 +6,6 @@ namespace TriangleCompiler.SyntacticAnalyser
 		void ParseExpression()
 		{
 			System.Console.WriteLine("Parsing expression");
-			//ParseSecondaryExpression();
-			//while (_currentToken.Kind == TokenKind.Operator)
-			//{
-			//	AcceptIt();
-			//	ParsePrimaryExpression();
-			//}
             switch(_currentToken.Kind){
                 case TokenKind.Let:{
                         AcceptIt();
@@ -41,7 +35,12 @@ namespace TriangleCompiler.SyntacticAnalyser
 		void ParseSecondaryExpression()
 		{
 			System.Console.WriteLine("parsing secondary expression");
-
+            ParsePrimaryExpression();
+            if(_currentToken.Kind == TokenKind.Operator)
+            {
+                ParseOperator();
+                ParsePrimaryExpression();
+            }
 		}
 
 		void ParsePrimaryExpression()
@@ -54,29 +53,36 @@ namespace TriangleCompiler.SyntacticAnalyser
 						ParseIntLiteral();
 						break;
 					}
-				case TokenKind.Identifier:
+				case TokenKind.CharLiteral:
 					{
-						ParseIdentifier();
+						ParseCharLiteral();
 						break;
 					}
-				case TokenKind.Operator:
+				case TokenKind.Identifier:
 					{
-						AcceptIt();
-						ParsePrimaryExpression();
+                        ParseIdentifier();
+						if(_currentToken.Kind == TokenKind.LeftParen)
+                        {
+                            AcceptIt();
+                            ParseActualParameterSequence();
+                            Accept(TokenKind.RightParen);
+                        }
 						break;
 
 					}
-				case TokenKind.LeftParen:
-					{
-						AcceptIt();
-						ParseExpression();
-						break;
-					}
-				case TokenKind.RightParen:
-					{
-						AcceptIt();
-						break;
-					}
+                case TokenKind.Operator:
+                    {
+                        ParseOperator();
+                        ParsePrimaryExpression();
+                        break;
+                    }
+                case TokenKind.LeftParen:
+                    {
+                        AcceptIt();
+                        ParseExpression();
+                        Accept(TokenKind.RightParen);
+                        break;
+                    }
 				default:
 					System.Console.WriteLine("error");
 					break;
