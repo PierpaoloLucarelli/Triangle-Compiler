@@ -1,12 +1,17 @@
 ﻿<Properties StartupConfiguration="{F9449CFE-3E3B-4248-99E7-79A089963FBD}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="TriangleCompiler/SyntacticAnalyser/ParserTerminals.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="TriangleCompiler/SyntacticAnalyser/ParserActualParameterSequence.cs">
     <Files>
-      <File FileName="TriangleCompiler/SyntacticAnalyser/ParserCommand.cs" Line="1" Column="1" />
-      <File FileName="TriangleCompiler/SyntacticAnalyser/ParserProgram.cs" Line="1" Column="1" />
-      <File FileName="TriangleCompiler/SyntacticAnalyser/ParserCommon.cs" Line="14" Column="30" />
-      <File FileName="TriangleCompiler/SyntacticAnalyser/ParserTerminals.cs" Line="1" Column="1" />
-      <File FileName="TriangleCompiler/SyntacticAnalyser/ParserExpression.cs" Line="1" Column="1" />
-      <File FileName="TriangleCompiler/SyntacticAnalyser/ParserVname.cs" Line="1" Column="1" />
+      <File FileName="TriangleCompiler/SyntacticAnalyser/ParserCommand.cs" Line="22" Column="10" />
+      <File FileName="TriangleCompiler/SyntacticAnalyser/ParserProgram.cs" Line="10" Column="48" />
+      <File FileName="TriangleCompiler/SyntacticAnalyser/ParserCommon.cs" Line="29" Column="59" />
+      <File FileName="TriangleCompiler/SyntacticAnalyser/ParserTerminals.cs" Line="14" Column="13" />
+      <File FileName="TriangleCompiler/SyntacticAnalyser/ParserExpression.cs" Line="13" Column="46" />
+      <File FileName="TriangleCompiler/SyntacticAnalyser/ParserVname.cs" Line="8" Column="40" />
+      <File FileName="TriangleCompiler/Compiler.cs" Line="34" Column="37" />
+      <File FileName="TriangleCompiler/test.tri" Line="12" Column="4" />
+      <File FileName="TriangleCompiler/SyntacticAnalyser/ParserDeclaration.cs" Line="1" Column="1" />
+      <File FileName="TriangleCompiler/SyntacticAnalyser/Token.cs" Line="37" Column="69" />
+      <File FileName="TriangleCompiler/SyntacticAnalyser/ParserActualParameterSequence.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
