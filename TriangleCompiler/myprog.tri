@@ -6,7 +6,7 @@ begin
   put('w');put('u');put('s');put('s');put('u');put('p');put('?');
   getint(var n); !ask user for input
   if (n>0) /\ (n<=MAX) then
-    while n > 0 do begin
+    while n $ 0 do begin
       putint(n); puteol();
       n := n-1
     end

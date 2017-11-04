@@ -44,7 +44,7 @@ namespace TriangleCompiler.SyntacticAnalyser
                 var kind = ScanToken();
                 var endLocation = _source.getLocation();
                 var position = new SourcePosition(startLocation, endLocation);
-                Console.WriteLine(position);
+                //Console.WriteLine(position);
 
                 var token = new Token(kind, _currentSpelling.ToString());
                 if (_debug)
@@ -114,7 +114,7 @@ namespace TriangleCompiler.SyntacticAnalyser
                 return TokenKind.Operator;
             }
 
-            // if it's a ' take it and next and check if another ' is present
+            // if it's a ' take it and tek next and check if another ' is present
             if (_source.Current == '\'')
             {
                 TakeIt(); TakeIt();
@@ -123,7 +123,14 @@ namespace TriangleCompiler.SyntacticAnalyser
                     TakeIt();
                     return TokenKind.CharLiteral;
                 }
-                else return TokenKind.Error;
+                else {
+					Location ErrPos = _source.getLocation();
+					Console.WriteLine("Error unterminated Character Literal at position: " + ErrPos);
+                    do TakeIt();
+                    while (_source.Current != '\'' && _source.Current != -1);
+                    TakeIt();
+                    return TokenKind.Error; 
+                }
             }
 
             // check if it's a : and if it's followed by =
@@ -148,6 +155,8 @@ namespace TriangleCompiler.SyntacticAnalyser
             else
             {
                 TakeIt();
+				Location ErrPos = _source.getLocation();
+				Console.WriteLine("Error unexpected token at position: " + ErrPos);
                 return TokenKind.Error;
             }
 

@@ -1,20 +1,21 @@
 ﻿<Properties StartupConfiguration="{F9449CFE-3E3B-4248-99E7-79A089963FBD}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="TriangleCompiler/myprog.tri">
+  <MonoDevelop.Ide.Workbench ActiveDocument="TriangleCompiler/print.tri">
     <Files>
       <File FileName="TriangleCompiler/SyntacticAnalyser/ParserDeclaration.cs" Line="1" Column="1" />
       <File FileName="TriangleCompiler/SyntacticAnalyser/Token.cs" Line="11" Column="31" />
       <File FileName="TriangleCompiler/SyntacticAnalyser/ParserActualParameterSequence.cs" Line="12" Column="83" />
-      <File FileName="TriangleCompiler/SyntacticAnalyser/Scanner.cs" Line="47" Column="45" />
+      <File FileName="TriangleCompiler/SyntacticAnalyser/Scanner.cs" Line="129" Column="29" />
       <File FileName="TriangleCompiler/test.tri" Line="13" Column="4" />
       <File FileName="TriangleCompiler/SyntacticAnalyser/ParserVname.cs" Line="8" Column="21" />
       <File FileName="TriangleCompiler/SyntacticAnalyser/SourceFile.cs" Line="108" Column="10" />
-      <File FileName="TriangleCompiler/print.tri" Line="1" Column="40" />
+      <File FileName="TriangleCompiler/print.tri" Line="1" Column="41" />
       <File FileName="TriangleCompiler/SyntacticAnalyser/Location.cs" Line="18" Column="27" />
       <File FileName="TriangleCompiler/SyntacticAnalyser/Utils.cs" Line="1" Column="1" />
       <File FileName="TriangleCompiler/SyntacticAnalyser/TokenKind.cs" Line="1" Column="1" />
       <File FileName="TriangleCompiler/SyntacticAnalyser/SourcePosition.cs" Line="18" Column="10" />
-      <File FileName="TriangleCompiler/Compiler.cs" Line="34" Column="7" />
-      <File FileName="TriangleCompiler/myprog.tri" Line="1" Column="1" />
+      <File FileName="TriangleCompiler/Compiler.cs" Line="34" Column="5" />
+      <File FileName="TriangleCompiler/myprog.tri" Line="3" Column="6" />
+      <File FileName="TriangleCompiler/printer.tri" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
