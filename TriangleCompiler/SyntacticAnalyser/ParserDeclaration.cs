@@ -1,5 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿/* 
+ * Pierpaolo Lucarelli - CM4106 - Full Time: Languages and Compilers
+ * CM4106 - Full Time: Languages and Compilers
+ */
+
 namespace TriangleCompiler.SyntacticAnalyser
 {
     public partial class Parser
@@ -10,7 +13,7 @@ namespace TriangleCompiler.SyntacticAnalyser
             ParseSingleDeclaration();
             while (_currentToken.Kind == TokenKind.Semicolon)
             {
-                AcceptIt();
+                AcceptIt(); // accept semicolon
                 ParseSingleDeclaration();
             }
         }
@@ -22,7 +25,7 @@ namespace TriangleCompiler.SyntacticAnalyser
             {
                 case TokenKind.Const:
                     {
-                        AcceptIt();
+                        AcceptIt(); // accept const token
                         ParseIdentifier();
                         Accept(TokenKind.Is);
                         ParseExpression();
@@ -30,15 +33,16 @@ namespace TriangleCompiler.SyntacticAnalyser
                     }
                 case TokenKind.Var:
                     {
-                        AcceptIt();
+                        AcceptIt(); // accept var token
                         ParseIdentifier();
                         if(_currentToken.Kind == TokenKind.Colon)
                         {
-                            AcceptIt();
+                            AcceptIt(); // accept colon token
                             ParseTypeDenoter();
                         }
                         else
-                            System.Console.WriteLine("ERROR: error in parsing single declaration");
+                            // colon token is mandatory
+                            System.Console.WriteLine("ERROR: error in parsing single declaration: missing colon");
                         break;
 
                     }

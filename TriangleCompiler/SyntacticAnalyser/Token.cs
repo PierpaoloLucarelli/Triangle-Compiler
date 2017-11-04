@@ -1,4 +1,9 @@
-﻿using System;
+﻿/* 
+ * Pierpaolo Lucarelli - CM4106 - Full Time: Languages and Compilers
+ * CM4106 - Full Time: Languages and Compilers
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 

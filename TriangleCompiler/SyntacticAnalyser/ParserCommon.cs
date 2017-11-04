@@ -1,4 +1,8 @@
-﻿using System;
+﻿/* 
+ * Pierpaolo Lucarelli - CM4106 - Full Time: Languages and Compilers
+ * CM4106 - Full Time: Languages and Compilers
+ */
+
 using System.Collections.Generic;
 namespace TriangleCompiler.SyntacticAnalyser
 {
@@ -17,7 +21,7 @@ namespace TriangleCompiler.SyntacticAnalyser
         }
 
 		// Checks that the kind of the current token matches the expected kind, and
-		// fetches the next token from the source file, if not it throws a
+		// fetches the next token from the source file
 		public void Accept(TokenKind expectedKind){
 			if (_currentToken.Kind == expectedKind)
 			{
@@ -32,7 +36,6 @@ namespace TriangleCompiler.SyntacticAnalyser
 
 		// Just Fetches the next token from the source file.
 		void AcceptIt(){
-            //_previousLocation = _currentToken.Finish;
             _tokens.MoveNext();
             _currentToken = _tokens.Current;
         }

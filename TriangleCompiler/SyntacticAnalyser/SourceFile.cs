@@ -1,4 +1,9 @@
-﻿using System;
+﻿/* 
+ * Pierpaolo Lucarelli - CM4106 - Full Time: Languages and Compilers
+ * CM4106 - Full Time: Languages and Compilers
+ */
+
+using System;
 using System.IO;
 using System.Collections.Generic;
 
@@ -8,7 +13,6 @@ namespace TriangleCompiler.SyntacticAnalyser
     {
 		// file will be stored here
         StreamReader _source;
-
 
 		string _buffer;
 
@@ -103,6 +107,7 @@ namespace TriangleCompiler.SyntacticAnalyser
 			}
 		}
 
+        // return location of current line number and index
         public Location getLocation(){
             return new Location(this._lineNumber, this._index);
         }

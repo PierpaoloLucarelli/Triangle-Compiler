@@ -1,6 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿/* 
+ * Pierpaolo Lucarelli - CM4106 - Full Time: Languages and Compilers
+ * CM4106 - Full Time: Languages and Compilers
+ */
+
+using System;
 
 namespace TriangleCompiler.SyntacticAnalyser
 {
@@ -8,8 +11,8 @@ namespace TriangleCompiler.SyntacticAnalyser
     {
         void ParseActualParameterSequence()
         {
-            System.Console.WriteLine("parsing actual parameter sequence");
-            // if current token if right braket, we don't prase parameter sequence
+            Console.WriteLine("parsing actual parameter sequence");
+            // parameter sequence may be empty if we find a right parenthesis
             if (_currentToken.Kind != TokenKind.RightParen)
             {
                 ParseActualParameter();
@@ -24,7 +27,7 @@ namespace TriangleCompiler.SyntacticAnalyser
 
         void ParseActualParameter()
         {
-            System.Console.WriteLine("parsing actual parameter");
+            Console.WriteLine("parsing actual parameter");
             switch (_currentToken.Kind)
             {
                 case (TokenKind.Var):
@@ -33,7 +36,7 @@ namespace TriangleCompiler.SyntacticAnalyser
                         ParseVname();
                         break;
                     }
-
+                // check if we have an expression
                 case TokenKind.Identifier:
                 case TokenKind.IntLiteral:
                 case TokenKind.CharLiteral:

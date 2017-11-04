@@ -1,22 +1,26 @@
-﻿namespace TriangleCompiler.SyntacticAnalyser
+﻿/* 
+ * Pierpaolo Lucarelli - CM4106 - Full Time: Languages and Compilers
+ * CM4106 - Full Time: Languages and Compilers
+ */
+namespace TriangleCompiler.SyntacticAnalyser
 {
 	public partial class Parser
 	{
-		// Parses the command error
+		// Parses the command
 		void ParseCommand()
 		{
 			System.Console.WriteLine("parsing command");
 			ParseSingleCommand();
+            // command may be followed by any number of commands separated by a ';'
 			while (_currentToken.Kind == TokenKind.Semicolon)
 			{
-				AcceptIt();
+				AcceptIt(); // take the semicolon
 				ParseSingleCommand();
 			}
 		}
 
 
-		// Parses the single command
-
+		// Parses a single command
 		void ParseSingleCommand()
 		{
             System.Console.WriteLine("parsing single command");
@@ -28,12 +32,12 @@
                         ParseVname();
 						if (_currentToken.Kind == TokenKind.Becomes)
 						{
-							AcceptIt();
+							AcceptIt(); // take become token
 							ParseExpression();
 						}
 						else if (_currentToken.Kind == TokenKind.LeftParen)
 						{
-							AcceptIt();
+							AcceptIt(); // take left parent
                             ParseActualParameterSequence();
 							Accept(TokenKind.RightParen);
 						}
@@ -42,7 +46,7 @@
 					}
 				case TokenKind.If:
 					{
-						AcceptIt();
+						AcceptIt(); // take if token
 						ParseExpression();
 						Accept(TokenKind.Then);
 						ParseSingleCommand();
@@ -52,7 +56,7 @@
 					}
 				case TokenKind.While:
 					{
-						AcceptIt();
+						AcceptIt(); // take while token
 						ParseExpression();
 						Accept(TokenKind.Do);
 						ParseSingleCommand();
@@ -60,7 +64,7 @@
 					}
 				case TokenKind.Let:
 					{
-                        AcceptIt();
+                        AcceptIt(); // take let token
 						ParseDeclaration();
 						Accept(TokenKind.In);
 						ParseSingleCommand();
@@ -68,11 +72,12 @@
 					}
 				case TokenKind.Begin:
 					{
-						AcceptIt();
+						AcceptIt(); // take begin token
                         ParseCommand();
 						Accept(TokenKind.End);
 						break;
 					}
+                // fix the trailing else problem
                 case TokenKind.Semicolon:
                 case TokenKind.End:
                 case TokenKind.Else:

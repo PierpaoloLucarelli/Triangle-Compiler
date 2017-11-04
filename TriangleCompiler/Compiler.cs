@@ -1,4 +1,9 @@
-﻿using System;
+﻿/* 
+ * Pierpaolo Lucarelli - CM4106 - Full Time: Languages and Compilers
+ * CM4106 - Full Time: Languages and Compilers
+ */
+
+using System;
 using TriangleCompiler.SyntacticAnalyser;
 
 namespace TriangleCompiler
@@ -20,18 +25,23 @@ namespace TriangleCompiler
 		static void Main(string[] args)
 		{
 			Console.WriteLine("Running Triangle Compiler");
-			var sourceFileName = args[0];
-
-			if (sourceFileName != null)
-			{
-				var compiler = new Compiler(sourceFileName);
-				foreach (var token in compiler._scanner)
-				{
-					Console.WriteLine(token);
-				}
-				compiler._source.Reset(); //uncomment to reset source code.
-				Console.WriteLine("\n");
-				compiler._parser.ParseProgram();
+            // read file name form cmd-line args
+            if (args.Length > 0)
+            {
+                var sourceFileName = args[0];
+                if (sourceFileName != null)
+                {
+                    var compiler = new Compiler(sourceFileName);
+                    foreach (var token in compiler._scanner)
+                    {
+                        Console.WriteLine(token);
+                    }
+                    compiler._source.Reset();
+                    Console.WriteLine("\n");
+                    compiler._parser.ParseProgram();
+                }
+			} else {
+				Console.WriteLine("Please specify a file name");
 			}
 		}
 	}
