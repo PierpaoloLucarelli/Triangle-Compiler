@@ -1,27 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
 namespace TriangleCompiler.SyntacticAnalyser
 {
-	public class SourcePosition
-	{
+    public class SourcePosition
+    {
+        public Location startPosition;
+        public Location endPosition;
+        public SourcePosition(Location s, Location e)
+        {
+            this.startPosition = s;
+            this.endPosition = e;
+        }
 
-		//Location start;
-		//Location end;
-
-		public SourcePosition(Location start, Location end)
-		{
-			this.start = start;
-			this.end = end;
-		}
-
-		public override string ToString()
-		{
-			String output;
-			output = "Start location: " + this.start + "\nEnd location: " + this.end;
-			return output;
-		}
-
+        public override string ToString() {
+            String output = "";
+            output += "Start position: " + this.startPosition + ", End position: " + this.endPosition;
+            return output;
+        }
 	}
 }

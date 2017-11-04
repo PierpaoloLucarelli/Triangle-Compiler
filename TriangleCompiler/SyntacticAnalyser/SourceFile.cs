@@ -102,5 +102,9 @@ namespace TriangleCompiler.SyntacticAnalyser
 				}
 			}
 		}
+
+        public Location getLocation(){
+            return new Location(this._lineNumber, this._index);
+        }
     }
 }

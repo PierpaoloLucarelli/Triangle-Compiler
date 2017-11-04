@@ -31,7 +31,7 @@ namespace TriangleCompiler
 				}
 				compiler._source.Reset(); //uncomment to reset source code.
 				Console.WriteLine("\n");
-				compiler._parser.ParseProgram();
+				//compiler._parser.ParseProgram();
 			}
 		}
 	}
