@@ -3,6 +3,7 @@ namespace TriangleCompiler.SyntacticAnalyser
 {
     public class Utils
     {
+        
 		public static readonly Dictionary<char, TokenKind> simbols = new Dictionary<char, TokenKind>(){
 			{'.',  TokenKind.Dot},
 			{';',  TokenKind.Semicolon},

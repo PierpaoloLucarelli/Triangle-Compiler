@@ -1,1 +1,2 @@
-getint(var i);putint(i);puteol()
+! this is a comment
+getint(var i);putint();puteol('CC')

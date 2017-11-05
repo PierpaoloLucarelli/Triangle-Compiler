@@ -72,7 +72,7 @@ namespace TriangleCompiler.SyntacticAnalyser {
         void ScanSeparator() {
             if (_source.Current == '!') {
                 _source.SkipRestOfLine();
-                _source.MoveNext();
+                //_source.MoveNext();
             }
             else
                 _source.MoveNext();
