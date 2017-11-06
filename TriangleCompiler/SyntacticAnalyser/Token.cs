@@ -1,6 +1,6 @@
 ﻿/* 
  * Pierpaolo Lucarelli - CM4106 - Full Time: Languages and Compilers
- * CM4106 - Full Time: Languages and Compilers
+ * Coursework 1 - Scanner and Parser
  */
 
 using System;
@@ -29,7 +29,8 @@ namespace TriangleCompiler.SyntacticAnalyser
 		public Token(TokenKind kind, string spelling, SourcePosition pos)
 		{
 			Kind = kind;
-			this.Pos = pos; // save position
+			// save position
+			this.Pos = pos;
 			if (kind == TokenKind.Identifier)
 			{
 				TokenKind match;

@@ -1,4 +1,9 @@
-﻿using System.Collections.Generic;
+﻿/* 
+ * Pierpaolo Lucarelli - CM4106 - Full Time: Languages and Compilers
+ * Coursework 1 - Scanner and Parser
+ */
+
+using System.Collections.Generic;
 namespace TriangleCompiler.SyntacticAnalyser
 {
 	public class Utils

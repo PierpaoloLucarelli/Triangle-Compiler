@@ -1,4 +1,9 @@
-﻿namespace TriangleCompiler.SyntacticAnalyser
+﻿/* 
+ * Pierpaolo Lucarelli - CM4106 - Full Time: Languages and Compilers
+ * Coursework 1 - Scanner and Parser
+ */
+
+namespace TriangleCompiler.SyntacticAnalyser
 {
 	public enum TokenKind
 	{

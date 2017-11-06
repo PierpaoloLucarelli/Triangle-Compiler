@@ -1,6 +1,6 @@
 ﻿/* 
  * Pierpaolo Lucarelli - CM4106 - Full Time: Languages and Compilers
- * CM4106 - Full Time: Languages and Compilers
+ * Coursework 1 - Scanner and Parser
  */
 
 using System;
@@ -13,7 +13,7 @@ namespace TriangleCompiler.SyntacticAnalyser
 	{
 		// contains source file
 		SourceFile _source;
-		// sontains spelling of current token
+		// contains spelling of current token
 		StringBuilder _currentSpelling;
 
 		bool _debug;
@@ -82,7 +82,6 @@ namespace TriangleCompiler.SyntacticAnalyser
 			if (_source.Current == '!')
 			{
 				_source.SkipRestOfLine();
-				//_source.MoveNext();
 			}
 			else
 				_source.MoveNext();

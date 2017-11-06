@@ -1,6 +1,6 @@
 ﻿/* 
  * Pierpaolo Lucarelli - CM4106 - Full Time: Languages and Compilers
- * CM4106 - Full Time: Languages and Compilers
+ * Coursework 1 - Scanner and Parser
  */
 
 using System.Collections.Generic;
@@ -11,8 +11,6 @@ namespace TriangleCompiler.SyntacticAnalyser
 
 		private Scanner _scanner;
 
-		//private ErrorReporter ErrReporter;
-
 		private Token _currentToken;
 
 		IEnumerator<Token> _tokens;
@@ -21,7 +19,6 @@ namespace TriangleCompiler.SyntacticAnalyser
 		{
 			_scanner = scanner;
 			_tokens = _scanner.GetEnumerator();
-			//ErrReporter = new ErrorReporter();
 		}
 
 		// Checks that the kind of the current token matches the expected kind, and
@@ -31,7 +28,6 @@ namespace TriangleCompiler.SyntacticAnalyser
 			if (_currentToken.Kind == expectedKind)
 			{
 				Token token = _currentToken;
-				//_previousLocation = token.Start;
 				_tokens.MoveNext();
 				_currentToken = _tokens.Current;
 			}

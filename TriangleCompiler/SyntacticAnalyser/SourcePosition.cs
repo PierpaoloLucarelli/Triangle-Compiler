@@ -1,6 +1,6 @@
 ﻿/* 
  * Pierpaolo Lucarelli - CM4106 - Full Time: Languages and Compilers
- * CM4106 - Full Time: Languages and Compilers
+ * Coursework 1 - Scanner and Parser
  */
 
 using System;
@@ -11,7 +11,8 @@ namespace TriangleCompiler.SyntacticAnalyser
 	{
 		public Location startPosition;
 		public Location endPosition;
-		public SourcePosition(Location s, Location e)
+		
+        public SourcePosition(Location s, Location e)
 		{
 			this.startPosition = s;
 			this.endPosition = e;
