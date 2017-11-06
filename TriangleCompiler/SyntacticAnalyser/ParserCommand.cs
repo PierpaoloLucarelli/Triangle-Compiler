@@ -11,7 +11,7 @@ namespace TriangleCompiler.SyntacticAnalyser
 		{
 			System.Console.WriteLine("parsing command");
 			ParseSingleCommand();
-            // command may be followed by any number of commands separated by a ';'
+			// command may be followed by any number of commands separated by a ';'
 			while (_currentToken.Kind == TokenKind.Semicolon)
 			{
 				AcceptIt(); // take the semicolon
@@ -23,13 +23,13 @@ namespace TriangleCompiler.SyntacticAnalyser
 		// Parses a single command
 		void ParseSingleCommand()
 		{
-            System.Console.WriteLine("parsing single command");
+			System.Console.WriteLine("parsing single command");
 			switch (_currentToken.Kind)
 			{
-                
+
 				case TokenKind.Identifier:
 					{
-                        ParseVname();
+						ParseVname();
 						if (_currentToken.Kind == TokenKind.Becomes)
 						{
 							AcceptIt(); // take become token
@@ -38,7 +38,7 @@ namespace TriangleCompiler.SyntacticAnalyser
 						else if (_currentToken.Kind == TokenKind.LeftParen)
 						{
 							AcceptIt(); // take left parent
-                            ParseActualParameterSequence();
+							ParseActualParameterSequence();
 							Accept(TokenKind.RightParen);
 						}
 						break;
@@ -64,7 +64,7 @@ namespace TriangleCompiler.SyntacticAnalyser
 					}
 				case TokenKind.Let:
 					{
-                        AcceptIt(); // take let token
+						AcceptIt(); // take let token
 						ParseDeclaration();
 						Accept(TokenKind.In);
 						ParseSingleCommand();
@@ -73,21 +73,21 @@ namespace TriangleCompiler.SyntacticAnalyser
 				case TokenKind.Begin:
 					{
 						AcceptIt(); // take begin token
-                        ParseCommand();
+						ParseCommand();
 						Accept(TokenKind.End);
 						break;
 					}
-                // fix the trailing else problem
-                case TokenKind.Semicolon:
-                case TokenKind.End:
-                case TokenKind.Else:
-                case TokenKind.EndOfText:
-                    {
-                        break;
-                    }
-                default:
-                    ErrorReporter.ReportError("Cannot parse single command", _currentToken);
-                    break;
+				// fix the trailing else problem
+				case TokenKind.Semicolon:
+				case TokenKind.End:
+				case TokenKind.Else:
+				case TokenKind.EndOfText:
+					{
+						break;
+					}
+				default:
+					ErrorReporter.ReportError("Cannot parse single command", _currentToken);
+					break;
 			}
 		}
 	}

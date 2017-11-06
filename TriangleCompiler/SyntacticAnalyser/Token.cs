@@ -28,7 +28,7 @@ namespace TriangleCompiler.SyntacticAnalyser {
         public Token(TokenKind kind, string spelling, SourcePosition pos)
 		{
 			Kind = kind;
-            this.Pos = pos;
+            this.Pos = pos; // save position
             if (kind == TokenKind.Identifier)
 			{
 				TokenKind match;
