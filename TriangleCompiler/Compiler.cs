@@ -41,12 +41,7 @@ namespace TriangleCompiler
                     compiler._parser.ParseProgram();
 
                     Console.WriteLine("\n---------------\n");
-                    int errCount = compiler._parser.GetErrCount();
-                    Console.ForegroundColor = 
-                        ( errCount > 0 ? ConsoleColor.Red : ConsoleColor.Green);
-                    Console.WriteLine("Program parsed with " + errCount + 
-                                      (errCount > 1 || errCount == 0 ? " errors" : " error"));
-                    Console.ResetColor();
+                    Console.WriteLine(ErrorReporter.getErrorReport());
                 }
 			} else {
 				Console.WriteLine("Please specify a file name");

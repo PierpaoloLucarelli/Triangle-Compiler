@@ -11,7 +11,7 @@ namespace TriangleCompiler.SyntacticAnalyser
 
         private Scanner _scanner;
 
-        private ErrorReporter ErrReporter;
+        //private ErrorReporter ErrReporter;
 
         private Token _currentToken;
 
@@ -20,7 +20,7 @@ namespace TriangleCompiler.SyntacticAnalyser
         public Parser(Scanner scanner){
 			_scanner = scanner;
             _tokens = _scanner.GetEnumerator();
-            ErrReporter = new ErrorReporter();
+            //ErrReporter = new ErrorReporter();
         }
 
 		// Checks that the kind of the current token matches the expected kind, and
@@ -34,7 +34,7 @@ namespace TriangleCompiler.SyntacticAnalyser
 				_currentToken = _tokens.Current;
             } else{
                 string errMsg = "Expected: " + expectedKind + " but got: " + _currentToken.Kind;
-                ErrReporter.ReportError(errMsg, _currentToken);
+                ErrorReporter.ReportError(errMsg, _currentToken);
             }
         }
 
@@ -44,8 +44,8 @@ namespace TriangleCompiler.SyntacticAnalyser
             _currentToken = _tokens.Current;
         }
 
-        public int GetErrCount(){
-            return this.ErrReporter.ErrorCount();
-        }
+        //public int GetErrCount(){
+        //    return this.ErrReporter.ErrorCount();
+        //}
     }
 }

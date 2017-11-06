@@ -42,13 +42,13 @@ namespace TriangleCompiler.SyntacticAnalyser
                         }
                         else
 							// colon token is mandatory
-							ErrReporter.ReportError("Missing colon", _currentToken);
+							ErrorReporter.ReportError("Missing colon", _currentToken);
                         break;
 
                     }
                 default:
                     {
-						ErrReporter.ReportError("Cannot parse single declaration", _currentToken);
+						ErrorReporter.ReportError("Cannot parse single declaration", _currentToken);
                         break;
                     }
             }

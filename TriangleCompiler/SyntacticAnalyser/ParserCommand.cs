@@ -86,7 +86,7 @@ namespace TriangleCompiler.SyntacticAnalyser
                         break;
                     }
                 default:
-                    ErrReporter.ReportError("Cannot parse single command", _currentToken);
+                    ErrorReporter.ReportError("Cannot parse single command", _currentToken);
                     break;
 			}
 		}

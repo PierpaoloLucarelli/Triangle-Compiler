@@ -117,7 +117,7 @@ namespace TriangleCompiler.SyntacticAnalyser {
                 else {
                     // if there is an unclosed char or more than one char show error
 					Location ErrPos = _source.getLocation();
-					Console.WriteLine("Error unterminated char literal at position: " + ErrPos);
+                    ErrorReporter.ReportError("Error unterminated char literal at position: " + ErrPos);
                     do TakeIt(); // take characters unitl end of file or closing '
                     while (_source.Current != '\'' && _source.Current != -1);
                     TakeIt(); // take closing '

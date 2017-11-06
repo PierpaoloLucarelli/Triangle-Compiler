@@ -6,33 +6,49 @@
 using System;
 namespace TriangleCompiler.SyntacticAnalyser
 {
-    public class ErrorReporter
+    public static class ErrorReporter
     {
-        private bool ErrFlag;
-        private int ErrCount;
+        private static bool ErrFlag = false;
+        private static int ErrCountParse = 0;
+        private static int ErrCountScan = 0;
 
-        public ErrorReporter()
-        {
-            this.ErrFlag = false;
-            this.ErrCount = 0;
-        }
-
-        // prints out an error
-        public void ReportError(String msg, Token tk) {
+        // prints out an error for the parser
+        public static void ReportError(String msg, Token tk) {
             ErrFlag = true;
-            ErrCount++;
+            ErrCountParse++;
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("ERROR: " + msg + " from token: " + tk);
             Console.ResetColor();
 
         }
 
-        public bool HasErrors(){
-            return this.ErrFlag;
+		// prints out an error for the scanner
+		public static void ReportError(String msg) {
+			ErrFlag = true;
+			ErrCountScan++;
+			Console.ForegroundColor = ConsoleColor.Red;
+			Console.WriteLine("ERROR: " + msg);
+			Console.ResetColor();
+		}
+
+        public static bool HasErrors(){
+            return ErrFlag;
         }
 
-        public int ErrorCount(){
-            return this.ErrCount;
+        public static int ErrorCountParse(){
+            return ErrCountParse;
+        }
+
+        public static int ErrorCountScan(){
+			return ErrCountParse;
+		}
+
+        public static String getErrorReport(){
+            Console.ForegroundColor = (ErrFlag ? ConsoleColor.Red : ConsoleColor.Green);
+            String output = "";
+            output += "Program processed with: " + ErrCountScan +
+                " scanning errors and " + ErrCountParse + " parsing errors";
+            return output;
         }
     }
 }

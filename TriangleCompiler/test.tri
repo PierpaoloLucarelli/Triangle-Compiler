@@ -1,4 +1,5 @@
 let
+  ! this is a comment
   const MAX ~ 10;
   var n: Integer
 in
