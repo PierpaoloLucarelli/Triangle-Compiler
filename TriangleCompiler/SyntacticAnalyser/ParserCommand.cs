@@ -86,7 +86,7 @@ namespace TriangleCompiler.SyntacticAnalyser
                         break;
                     }
                 default:
-					System.Console.WriteLine("ERROR: Error in parsing command");
+                    ErrReporter.ReportError("Cannot parse single command", _currentToken);
                     break;
 			}
 		}
