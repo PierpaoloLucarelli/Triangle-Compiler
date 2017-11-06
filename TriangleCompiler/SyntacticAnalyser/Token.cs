@@ -42,7 +42,7 @@ namespace TriangleCompiler.SyntacticAnalyser {
 
 		public override string ToString()
 		{
-			return string.Format("Kind={0}, spelling=\"{1}\"", Kind, Spelling);
+            return string.Format("Kind={0}, spelling=\"{1}\" \nat position: {2}", Kind, Spelling, Pos);
 		}
 	}
 }

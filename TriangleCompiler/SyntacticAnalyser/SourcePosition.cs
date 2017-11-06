@@ -19,7 +19,7 @@ namespace TriangleCompiler.SyntacticAnalyser
 
         public override string ToString() {
             String output = "";
-            output += "Start position: " + this.startPosition + ", End position: " + this.endPosition;
+            output += "Start position: {" + this.startPosition + "}, End position: {" + this.endPosition + "}";
             return output;
         }
 	}
