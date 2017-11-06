@@ -42,9 +42,9 @@ namespace TriangleCompiler.SyntacticAnalyser {
                 var kind = ScanToken();
                 var endLocation = _source.getLocation();
                 var position = new SourcePosition(startLocation, endLocation);
-                // Console.WriteLine(position); // uncomment to view position
-                //create new token based on spelling and kind
-                var token = new Token(kind, _currentSpelling.ToString());
+
+                //create new token based on spelling, kind and position 
+                var token = new Token(kind, _currentSpelling.ToString(), position);
                 if (_debug)
                     Console.WriteLine(token);
 

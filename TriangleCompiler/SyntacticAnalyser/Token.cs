@@ -15,6 +15,8 @@ namespace TriangleCompiler.SyntacticAnalyser {
 				Enumerable.Range((int)TokenKind.Array, (int)TokenKind.While).Cast<TokenKind>()
 					.ToDictionary(kind => kind.ToString().ToLower(), kind => kind);
 
+        // the position of the token in the file
+        public SourcePosition Pos;
 
 		//The kind of a source token.
 		public TokenKind Kind { get; private set; }
@@ -23,9 +25,10 @@ namespace TriangleCompiler.SyntacticAnalyser {
 		public string Spelling { get; private set; }
 
 		// Creates a token
-		public Token(TokenKind kind, string spelling)
+        public Token(TokenKind kind, string spelling, SourcePosition pos)
 		{
 			Kind = kind;
+            this.Pos = pos;
             if (kind == TokenKind.Identifier)
 			{
 				TokenKind match;
