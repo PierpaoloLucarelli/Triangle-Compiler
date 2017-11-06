@@ -89,7 +89,7 @@ namespace TriangleCompiler.SyntacticAnalyser
                     }
                 default:
                     {
-                        System.Console.WriteLine("error in parsing primary expression");
+                        ErrReporter.ReportError("Cannot parse primary expression", _currentToken);
                         break;
                     }
 			}

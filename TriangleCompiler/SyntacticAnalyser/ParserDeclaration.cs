@@ -41,14 +41,14 @@ namespace TriangleCompiler.SyntacticAnalyser
                             ParseTypeDenoter();
                         }
                         else
-                            // colon token is mandatory
-                            System.Console.WriteLine("ERROR: error in parsing single declaration: missing colon");
+							// colon token is mandatory
+							ErrReporter.ReportError("Missing colon", _currentToken);
                         break;
 
                     }
                 default:
                     {
-                        System.Console.WriteLine("ERROR: error in parsing single declaration");
+						ErrReporter.ReportError("Cannot parse single declaration", _currentToken);
                         break;
                     }
             }
