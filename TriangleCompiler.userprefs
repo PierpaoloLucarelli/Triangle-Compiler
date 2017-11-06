@@ -1,23 +1,25 @@
 ﻿<Properties StartupConfiguration="{F9449CFE-3E3B-4248-99E7-79A089963FBD}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="TriangleCompiler/SyntacticAnalyser/ErrorReporter.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="TriangleCompiler/printer.tri">
     <Files>
-      <File FileName="TriangleCompiler/test.tri" Line="2" Column="22" />
+      <File FileName="TriangleCompiler/test.tri" Line="12" Column="4" />
       <File FileName="TriangleCompiler/SyntacticAnalyser/ParserCommon.cs" Line="40" Column="9" />
-      <File FileName="TriangleCompiler/test-error.tri" Line="4" Column="17" />
+      <File FileName="TriangleCompiler/test-error.tri" Line="9" Column="4" />
       <File FileName="TriangleCompiler/SyntacticAnalyser/ParserTerminals.cs" Line="1" Column="1" />
       <File FileName="TriangleCompiler/SyntacticAnalyser/ParserCommand.cs" Line="94" Column="2" />
-      <File FileName="TriangleCompiler/SyntacticAnalyser/Scanner.cs" Line="29" Column="10" />
+      <File FileName="TriangleCompiler/SyntacticAnalyser/Scanner.cs" Line="49" Column="44" />
       <File FileName="TriangleCompiler/SyntacticAnalyser/Token.cs" Line="45" Column="80" />
       <File FileName="TriangleCompiler/test-error2.tri" Line="9" Column="4" />
-      <File FileName="TriangleCompiler/SyntacticAnalyser/Location.cs" Line="1" Column="1" />
+      <File FileName="TriangleCompiler/SyntacticAnalyser/Location.cs" Line="15" Column="45" />
       <File FileName="TriangleCompiler/SyntacticAnalyser/ParserProgram.cs" Line="21" Column="2" />
-      <File FileName="TriangleCompiler/print.tri" Line="2" Column="34" />
-      <File FileName="TriangleCompiler/SyntacticAnalyser/ErrorReporter.cs" Line="30" Column="40" />
+      <File FileName="TriangleCompiler/print.tri" Line="2" Column="33" />
+      <File FileName="TriangleCompiler/SyntacticAnalyser/ErrorReporter.cs" Line="45" Column="9" />
       <File FileName="TriangleCompiler/SyntacticAnalyser/ParserDeclaration.cs" Line="44" Column="34" />
-      <File FileName="TriangleCompiler/Compiler.cs" Line="51" Column="12" />
-      <File FileName="TriangleCompiler/SyntacticAnalyser/ParserActualParameterSequence.cs" Line="2" Column="8" />
+      <File FileName="TriangleCompiler/Compiler.cs" Line="44" Column="69" />
+      <File FileName="TriangleCompiler/SyntacticAnalyser/ParserActualParameterSequence.cs" Line="26" Column="10" />
       <File FileName="TriangleCompiler/SyntacticAnalyser/ParserExpression.cs" Line="89" Column="22" />
       <File FileName="TriangleCompiler/SyntacticAnalyser/ParserTypeDenoter.cs" Line="1" Column="1" />
+      <File FileName="TriangleCompiler/SyntacticAnalyser/TokenKind.cs" Line="1" Column="1" />
+      <File FileName="TriangleCompiler/printer.tri" Line="3" Column="19" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

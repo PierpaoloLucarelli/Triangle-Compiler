@@ -6,6 +6,7 @@
 using System;
 namespace TriangleCompiler.SyntacticAnalyser
 {
+    // simple class to keep track of token's position
     public class Location
     {
         public int lineNumber;

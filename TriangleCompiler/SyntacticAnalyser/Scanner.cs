@@ -146,7 +146,7 @@ namespace TriangleCompiler.SyntacticAnalyser {
             else {
                 TakeIt();
 				Location ErrPos = _source.getLocation();
-				Console.WriteLine("Error unexpected token at position: " + ErrPos);
+                ErrorReporter.ReportError("Error unexpected token at position: " + ErrPos);
                 return TokenKind.Error;
             }
 
