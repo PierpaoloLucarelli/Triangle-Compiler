@@ -9,10 +9,10 @@ using System.Collections.Generic;
 
 namespace TriangleCompiler.SyntacticAnalyser
 {
-    public class SourceFile : IEnumerator<int>
-    {
+	public class SourceFile : IEnumerator<int>
+	{
 		// file will be stored here
-        StreamReader _source;
+		StreamReader _source;
 
 		string _buffer;
 
@@ -26,11 +26,11 @@ namespace TriangleCompiler.SyntacticAnalyser
 
 		public int Current { get { return _buffer == null ? -1 : _buffer[_index]; } }
 
-        object System.Collections.IEnumerator.Current { get { return Current; } }
+		object System.Collections.IEnumerator.Current { get { return Current; } }
 
-		
-        // Constructor
-        public SourceFile(string sourceFileName)
+
+		// Constructor
+		public SourceFile(string sourceFileName)
 		{
 			Name = sourceFileName;
 			try
@@ -44,7 +44,7 @@ namespace TriangleCompiler.SyntacticAnalyser
 			}
 		}
 
-        // Adds new line to buffer
+		// Adds new line to buffer
 		void ReadLine()
 		{
 			_buffer = _source.ReadLine();
@@ -54,7 +54,7 @@ namespace TriangleCompiler.SyntacticAnalyser
 			_lineNumber++;
 		}
 
-        // resets source file buffer to origin of file and resets line index / number
+		// resets source file buffer to origin of file and resets line index / number
 		public void Reset()
 		{
 			if (_source == null) { throw new InvalidOperationException(); }
@@ -107,9 +107,10 @@ namespace TriangleCompiler.SyntacticAnalyser
 			}
 		}
 
-        // return location of current line number and index
-        public Location getLocation(){
-            return new Location(this._lineNumber, this._index);
-        }
-    }
+		// return location of current line number and index
+		public Location getLocation()
+		{
+			return new Location(this._lineNumber, this._index);
+		}
+	}
 }

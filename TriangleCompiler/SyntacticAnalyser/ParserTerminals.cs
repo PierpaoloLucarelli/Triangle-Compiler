@@ -6,7 +6,7 @@
 using System;
 namespace TriangleCompiler.SyntacticAnalyser
 {
-    // terminals can be just accepted withouth extra checks
+	// terminals can be just accepted withouth extra checks
 	public partial class Parser
 	{
 		void ParseIdentifier()
@@ -15,22 +15,23 @@ namespace TriangleCompiler.SyntacticAnalyser
 			Accept(TokenKind.Identifier);
 		}
 
-        void ParseIntLiteral()
-        {
-            Console.WriteLine("parsing integer");
-            Accept(TokenKind.IntLiteral);
-        }
+		void ParseIntLiteral()
+		{
+			Console.WriteLine("parsing integer");
+			Accept(TokenKind.IntLiteral);
+		}
 
-        void ParseOperator()
-        {
-            Console.WriteLine("parsing operator");
-            Accept(TokenKind.Operator);
-        }
+		void ParseOperator()
+		{
+			Console.WriteLine("parsing operator");
+			Accept(TokenKind.Operator);
+		}
 
-        void ParseCharLiteral() {
-            Console.WriteLine("parsing char literal");
-            Accept(TokenKind.CharLiteral);
-        }
+		void ParseCharLiteral()
+		{
+			Console.WriteLine("parsing char literal");
+			Accept(TokenKind.CharLiteral);
+		}
 
 	}
 }

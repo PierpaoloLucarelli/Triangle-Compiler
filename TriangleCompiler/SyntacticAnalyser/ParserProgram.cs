@@ -6,10 +6,10 @@
 using System;
 namespace TriangleCompiler.SyntacticAnalyser
 {
-    public partial class Parser
-    {
+	public partial class Parser
+	{
 
-        // main entry to parsing the program
+		// main entry to parsing the program
 		public void ParseProgram()
 		{
 			Console.WriteLine("parsing Program");
@@ -17,5 +17,5 @@ namespace TriangleCompiler.SyntacticAnalyser
 			_currentToken = _tokens.Current;
 			ParseCommand();
 		}
-    }
+	}
 }

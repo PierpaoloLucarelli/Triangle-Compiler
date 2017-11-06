@@ -7,7 +7,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace TriangleCompiler.SyntacticAnalyser {
+namespace TriangleCompiler.SyntacticAnalyser
+{
 	public class Token
 	{
 		// Lookup table of reserved words used to screen tokens.
@@ -15,8 +16,8 @@ namespace TriangleCompiler.SyntacticAnalyser {
 				Enumerable.Range((int)TokenKind.Array, (int)TokenKind.While).Cast<TokenKind>()
 					.ToDictionary(kind => kind.ToString().ToLower(), kind => kind);
 
-        // the position of the token in the file
-        public SourcePosition Pos;
+		// the position of the token in the file
+		public SourcePosition Pos;
 
 		//The kind of a source token.
 		public TokenKind Kind { get; private set; }
@@ -25,11 +26,11 @@ namespace TriangleCompiler.SyntacticAnalyser {
 		public string Spelling { get; private set; }
 
 		// Creates a token
-        public Token(TokenKind kind, string spelling, SourcePosition pos)
+		public Token(TokenKind kind, string spelling, SourcePosition pos)
 		{
 			Kind = kind;
-            this.Pos = pos; // save position
-            if (kind == TokenKind.Identifier)
+			this.Pos = pos; // save position
+			if (kind == TokenKind.Identifier)
 			{
 				TokenKind match;
 				if (ReservedWords.TryGetValue(spelling, out match))
@@ -42,7 +43,7 @@ namespace TriangleCompiler.SyntacticAnalyser {
 
 		public override string ToString()
 		{
-            return string.Format("Kind={0}, spelling=\"{1}\" \nat position: {2}", Kind, Spelling, Pos);
+			return string.Format("Kind={0}, spelling=\"{1}\" \nat position: {2}", Kind, Spelling, Pos);
 		}
 	}
 }
