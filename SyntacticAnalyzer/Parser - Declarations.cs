@@ -1,4 +1,7 @@
 using Triangle.Compiler.SyntaxTrees.Declarations;
+using Triangle.Compiler.SyntaxTrees.Terminals;
+using Triangle.Compiler.SyntaxTrees.Expressions;
+using Triangle.Compiler.SyntaxTrees.Types;
 
 namespace Triangle.Compiler.SyntacticAnalyzer
 {
@@ -21,18 +24,19 @@ namespace Triangle.Compiler.SyntacticAnalyzer
          *           a syntactic error
          * 
          */
-        void ParseDeclaration()
+        Declaration ParseDeclaration()
         {
+            Declaration declaration = null;
             var startLocation = _currentToken.Start;
-            ParseSingleDeclaration();
+            declaration = ParseSingleDeclaration();
             while (_currentToken.Kind == TokenKind.Semicolon)
             {
                 AcceptIt();
-                ParseSingleDeclaration();
+                Declaration decl = ParseSingleDeclaration();
                 var declarationPosition = new SourcePosition(startLocation, _currentToken.Finish);
-
+                declaration = new SequentialDeclaration(declaration, decl, declarationPosition);
             }
-
+            return declaration;
         }
 
         /**
@@ -45,8 +49,9 @@ namespace Triangle.Compiler.SyntacticAnalyzer
          *           a syntactic error
          * 
          */
-        void ParseSingleDeclaration()
+        Declaration ParseSingleDeclaration()
         {
+            Declaration declaration = null;
             var startLocation = _currentToken.Start;
             switch (_currentToken.Kind)
             {
@@ -54,10 +59,11 @@ namespace Triangle.Compiler.SyntacticAnalyzer
                 case TokenKind.Const:
                     {
                         AcceptIt();
-                        ParseIdentifier();
+                        Identifier identifier = ParseIdentifier();
                         Accept(TokenKind.Is);
-                        ParseExpression();
+                        Expression expression = ParseExpression();
                         var declarationPosition = new SourcePosition(startLocation, _currentToken.Finish);
+                        declaration = new ConstDeclaration(identifier, expression, declarationPosition);
                         break;
 
                     }
@@ -65,21 +71,24 @@ namespace Triangle.Compiler.SyntacticAnalyzer
                 case TokenKind.Var:
                     {
                         AcceptIt();
-                        ParseIdentifier();
+                        Identifier identifier = ParseIdentifier();
                         Accept(TokenKind.Colon);
-                        ParseTypeDenoter();
+                        TypeDenoter typeDenoter = ParseTypeDenoter();
                         var declarationPosition = new SourcePosition(startLocation, _currentToken.Finish);
+                        declaration = new VarDeclaration(identifier, typeDenoter, declarationPosition);
                         break;
                     }
 
 
+                    // is this extra?
                 case TokenKind.Type:
                     {
                         AcceptIt();
-                        ParseIdentifier();
+                        Identifier identifier = ParseIdentifier();
                         Accept(TokenKind.Is);
-                        ParseTypeDenoter();
+                        TypeDenoter typeDenoter = ParseTypeDenoter();
                         var declarationPosition = new SourcePosition(startLocation, _currentToken.Finish);
+                        declaration = new TypeDeclaration(identifier, typeDenoter, declarationPosition);
                         break;
                     }
 
@@ -88,8 +97,8 @@ namespace Triangle.Compiler.SyntacticAnalyzer
                         RaiseSyntacticError("\"%\" cannot start a declaration", _currentToken);
                         break;
                     }
-
             }
+            return declaration;
 
         }
     }

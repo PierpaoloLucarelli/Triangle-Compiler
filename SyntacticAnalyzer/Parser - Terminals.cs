@@ -49,10 +49,10 @@ namespace Triangle.Compiler.SyntacticAnalyzer
          *           a syntactic error
          * 
          */
-        void ParseIdentifier()
+        Identifier ParseIdentifier()
         {
             Token token = Accept(TokenKind.Identifier);
-
+            return new Identifier(token);
         }
 
         /**
