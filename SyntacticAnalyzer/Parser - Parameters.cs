@@ -31,7 +31,7 @@ namespace Triangle.Compiler.SyntacticAnalyzer
          */
         ActualParameterSequence  ParseActualParameterSequence()
         {
-            ActualParameterSequence ActualParamSeq;
+            ActualParameterSequence ActualParamSeq = null;
             var startLocation = _currentToken.Position.Start;
             if (_currentToken.Kind == TokenKind.RightParen)
             {
@@ -56,21 +56,22 @@ namespace Triangle.Compiler.SyntacticAnalyzer
          */
         ActualParameterSequence ParseProperActualParameterSequence()
         {
+            ActualParameterSequence properParamSeq = null;
             var startLocation = _currentToken.Position.Start;
-            ParseActualParameter();
+            ActualParameter actualParam = ParseActualParameter();
             if (_currentToken.Kind == TokenKind.Comma)
             {
                 AcceptIt();
-                ParseProperActualParameterSequence();
+                ActualParameterSequence actualParamSeq = ParseProperActualParameterSequence();
                 var actualsPosition = new SourcePosition(startLocation, _currentToken.Position.Finish);
-
+                properParamSeq = new MultipleActualParameterSequence(actualParam, actualParamSeq, actualsPosition);
             }
             else
             {
                 var actualsPosition = new SourcePosition(startLocation, _currentToken.Position.Finish);
-
+                properParamSeq = new SingleActualParameterSequence(actualParam, actualsPosition);
             }
-           
+            return properParamSeq;
         }
 
         /**
@@ -122,7 +123,6 @@ namespace Triangle.Compiler.SyntacticAnalyzer
                     }
             }
             return actualParam;
-
         }
     }
 }

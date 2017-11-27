@@ -23,12 +23,16 @@ namespace Triangle.Compiler.SyntacticAnalyzer
          */
         Vname ParseVname()
         {
-            var startlocation = _currentToken.Start;
-            Identifier identifier = ParseIdentifier();
-            var vnamePos = new SourcePosition(startlocation, _currentToken.Finish);
-            Vname vname = new SimpleVname(identifier, vnamePos);
-            return vname;
+			var identifier = ParseIdentifier();
+			return ParseRestOfVname(identifier);
         }
+
+		Vname ParseRestOfVname(Identifier firstIdentifier)
+		{
+			var startLocation = firstIdentifier.Start;
+			Vname vname = new SimpleVname(firstIdentifier, firstIdentifier.Position);
+			return vname;
+		}
 
     }
 }

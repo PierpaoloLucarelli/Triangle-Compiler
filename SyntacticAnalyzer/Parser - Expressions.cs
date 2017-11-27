@@ -90,7 +90,7 @@ namespace Triangle.Compiler.SyntacticAnalyzer
                 expression = new BinaryExpression(expression, op, exp2, expressionPos);
                 break;
             }
-
+            return expression;
         }
 
         /// <summary>

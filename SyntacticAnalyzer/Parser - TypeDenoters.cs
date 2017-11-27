@@ -1,4 +1,5 @@
 using Triangle.Compiler.SyntaxTrees.Types;
+using Triangle.Compiler.SyntaxTrees.Terminals;
 
 namespace Triangle.Compiler.SyntacticAnalyzer
 {
@@ -21,17 +22,18 @@ namespace Triangle.Compiler.SyntacticAnalyzer
          *           a syntactic error
          * 
          */
-        void ParseTypeDenoter()
+        TypeDenoter ParseTypeDenoter()
         {
-
+            TypeDenoter typeDenoter = null;
             var startLocation = _currentToken.Start;
             switch (_currentToken.Kind)
             {
 
                 case TokenKind.Identifier:
                     {
-                        ParseIdentifier();
+                        Identifier identifier = ParseIdentifier();
                         var typePosition = new SourcePosition(startLocation, _currentToken.Finish);
+                        typeDenoter = new SimpleTypeDenoter(identifier, typePosition); // ask this
                         break;
                     }
 
@@ -41,9 +43,8 @@ namespace Triangle.Compiler.SyntacticAnalyzer
                         RaiseSyntacticError("\"%\" cannot start a type denoter", _currentToken);
                         break;
                     }
-
             }
-
+            return typeDenoter;
         }
 
     }
