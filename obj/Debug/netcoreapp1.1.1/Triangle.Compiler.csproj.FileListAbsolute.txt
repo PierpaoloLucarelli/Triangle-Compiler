@@ -1,4 +1,0 @@
-/Users/plucarelli/Projects/TriangleCompiler/obj/Debug/netcoreapp1.1.1/Triangle.Compiler.csproj.CoreCompileInputs.cache
-/Users/plucarelli/Projects/TriangleCompiler/obj/Debug/netcoreapp1.1.1/Triangle.Compiler.AssemblyInfoInputs.cache
-/Users/plucarelli/Projects/TriangleCompiler/obj/Debug/netcoreapp1.1.1/Triangle.Compiler.AssemblyInfo.cs
-/Users/plucarelli/Projects/TriangleCompiler/obj/Debug/netcoreapp1.1.1/Triangle.Compiler.csprojResolveAssemblyReference.cache
