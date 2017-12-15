@@ -1,3 +1,4 @@
+using Triangle.Compiler.CodeGenerator;
 using Triangle.Compiler.ContextualAnalyzer;
 using Triangle.Compiler.SyntacticAnalyzer;
 
@@ -38,6 +39,7 @@ namespace Triangle.Compiler
 		/// </summary>
 		Checker _checker;
 
+        Encoder _encoder;
 
 
         /// <summary>
@@ -53,7 +55,7 @@ namespace Triangle.Compiler
             _scanner = new Scanner(_source); //.EnableDebugging();
             _parser = new Parser(_scanner, ErrorReporter);
             _checker = new Checker(ErrorReporter);
-            //_encoder = new Encoder(ErrorReporter);
+            _encoder = new Encoder(ErrorReporter);
         }
 
         /// <summary>
@@ -97,9 +99,23 @@ namespace Triangle.Compiler
                 ErrorReporter.ReportMessage("Compilation was unsuccesful");
                 return false;
             }
-            
 
-            ErrorReporter.ReportMessage("Compilation was successful.");
+			// 3rd pass
+			ErrorReporter.ReportMessage("Code Generation ...");
+			_encoder.EncodeRun(program);
+			if (ErrorReporter.HasErrors)
+			{
+				ErrorReporter.ReportMessage("Compilation was unsuccessful.");
+				return false;
+			}
+
+			// finally save the object code
+			_encoder.SaveObjectProgram(ObjectFileName);
+
+
+
+
+			ErrorReporter.ReportMessage("Compilation was successful.");
             return true;
         }
 
