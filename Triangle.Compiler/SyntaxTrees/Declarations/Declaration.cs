@@ -1,3 +1,4 @@
+using Triangle.Compiler.CodeGenerator.Entities;
 using Triangle.Compiler.SyntaxTrees.Visitors;
 
 namespace Triangle.Compiler.SyntaxTrees.Declarations
@@ -7,6 +8,8 @@ namespace Triangle.Compiler.SyntaxTrees.Declarations
         protected Declaration(SourcePosition pos) : base(pos) { }
 
         public bool Duplicated { get; set; }
+
+
 
         public abstract TResult Visit<TArg, TResult>(IDeclarationVisitor<TArg, TResult> visitor, TArg arg);
 

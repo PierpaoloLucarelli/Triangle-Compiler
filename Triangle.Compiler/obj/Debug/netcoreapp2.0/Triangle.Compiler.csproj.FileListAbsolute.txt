@@ -24,3 +24,16 @@
 /Users/john/Projects/Triangle.NetCore.Student/Triangle.Compiler/obj/Debug/netcoreapp2.0/Triangle.Compiler.AssemblyInfo.cs
 /Users/john/Projects/Triangle.NetCore.Student/Triangle.Compiler/obj/Debug/netcoreapp2.0/Triangle.Compiler.dll
 /Users/john/Projects/Triangle.NetCore.Student/Triangle.Compiler/obj/Debug/netcoreapp2.0/Triangle.Compiler.pdb
+/Users/plucarelli/Projects/Triangle.NetCore.Student/Triangle.Compiler/obj/Debug/netcoreapp2.0/Triangle.Compiler.csprojResolveAssemblyReference.cache
+/Users/plucarelli/Projects/Triangle.NetCore.Student/Triangle.Compiler/obj/Debug/netcoreapp2.0/Triangle.Compiler.csproj.CoreCompileInputs.cache
+/Users/plucarelli/Projects/Triangle.NetCore.Student/Triangle.Compiler/obj/Debug/netcoreapp2.0/Triangle.Compiler.AssemblyInfoInputs.cache
+/Users/plucarelli/Projects/Triangle.NetCore.Student/Triangle.Compiler/obj/Debug/netcoreapp2.0/Triangle.Compiler.AssemblyInfo.cs
+/Users/plucarelli/Projects/Triangle.NetCore.Student/Triangle.Compiler/obj/Debug/netcoreapp2.0/Triangle.Compiler.dll
+/Users/plucarelli/Projects/Triangle.NetCore.Student/Triangle.Compiler/obj/Debug/netcoreapp2.0/Triangle.Compiler.pdb
+/Users/plucarelli/Projects/Triangle.NetCore.Student/Triangle.Compiler/bin/Debug/netcoreapp2.0/Triangle.Compiler.deps.json
+/Users/plucarelli/Projects/Triangle.NetCore.Student/Triangle.Compiler/bin/Debug/netcoreapp2.0/Triangle.Compiler.runtimeconfig.json
+/Users/plucarelli/Projects/Triangle.NetCore.Student/Triangle.Compiler/bin/Debug/netcoreapp2.0/Triangle.Compiler.runtimeconfig.dev.json
+/Users/plucarelli/Projects/Triangle.NetCore.Student/Triangle.Compiler/bin/Debug/netcoreapp2.0/Triangle.Compiler.dll
+/Users/plucarelli/Projects/Triangle.NetCore.Student/Triangle.Compiler/bin/Debug/netcoreapp2.0/Triangle.Compiler.pdb
+/Users/plucarelli/Projects/Triangle.NetCore.Student/Triangle.Compiler/bin/Debug/netcoreapp2.0/Triangle.AbstractMachine.dll
+/Users/plucarelli/Projects/Triangle.NetCore.Student/Triangle.Compiler/bin/Debug/netcoreapp2.0/Triangle.AbstractMachine.pdb
