@@ -77,9 +77,6 @@ namespace Triangle.Compiler.SyntacticAnalyzer
                         declaration = new VarDeclaration(identifier, typeDenoter, declarationPosition);
                         break;
                     }
-
-
-                    // is this extra?
                 case TokenKind.Type:
                     {
                         AcceptIt();

@@ -85,8 +85,10 @@ namespace Triangle.Compiler.ContextualAnalyzer
 
         public TypeDenoter VisitLetExpression(LetExpression ast, Void arg)
         {
-
-            return null;
+            _idTable.OpenScope();
+            ast.Declaration.Visit(this);
+            ast.Expression.Visit(this);
+            return ast.Type;
         }
 
 

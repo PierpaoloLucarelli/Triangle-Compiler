@@ -9,18 +9,24 @@ namespace Triangle.Compiler.ContextualAnalyzer
 
         public Void VisitConstDeclaration(ConstDeclaration ast, Void arg)
         {
+            ast.Expression.Visit(this);
+            _idTable.Enter(ast.Identifier, ast);
+			CheckAndReportError(!ast.Duplicated, "identifier \"%\" alreadydeclared",ast.Identifier, ast);
             return null;
         }
 
 		public Void VisitVarDeclaration(VarDeclaration ast, Void arg)
 		{
-
+            ast.Type = ast.Type.Visit(this);
+            _idTable.Enter(ast.Identifier, ast);
+            CheckAndReportError(!ast.Duplicated, "identifier \"%\" alreadydeclared", ast.Identifier, ast);
 			return null;
 		}
 
         public Void VisitSequentialDeclaration(SequentialDeclaration ast, Void arg)
         {
-            
+            ast.FirstDeclaration.Visit(this);
+            ast.SecondDeclaration.Visit(this);
             return null;
         }
 
