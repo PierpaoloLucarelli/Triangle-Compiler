@@ -4,7 +4,7 @@ let
     var	x:	Integer
 in
 begin
-    y	:=	5;
+    y	:=	r;
     put('?');
     getint(var	x);
     if	(x>0)	/\ (x<=MAX)	then
