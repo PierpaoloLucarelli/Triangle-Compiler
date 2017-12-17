@@ -30,12 +30,13 @@ namespace Triangle.Compiler.SyntacticAnalyzer
          */
         Declaration ParseDeclaration()
         {
+            // can be single delcaration or sequential declaration
             Declaration declaration = null;
             var startLocation = _currentToken.Start;
             declaration = ParseSingleDeclaration();
             while (_currentToken.Kind == TokenKind.Semicolon)
             {
-                AcceptIt();
+                AcceptIt(); // take semicolon
                 Declaration decl = ParseSingleDeclaration();
                 var declarationPosition = new SourcePosition(startLocation, _currentToken.Finish);
                 declaration = new SequentialDeclaration(declaration, decl, declarationPosition);
@@ -62,7 +63,8 @@ namespace Triangle.Compiler.SyntacticAnalyzer
 
                 case TokenKind.Const:
                     {
-                        AcceptIt();
+                        // constant declaration
+                        AcceptIt(); // take const token
                         Identifier identifier = ParseIdentifier();
                         Accept(TokenKind.Is);
                         Expression expression = ParseExpression();
@@ -73,7 +75,8 @@ namespace Triangle.Compiler.SyntacticAnalyzer
 
                 case TokenKind.Var:
                     {
-                        AcceptIt();
+                        // var declaration
+                        AcceptIt(); // take var token
                         Identifier identifier = ParseIdentifier();
                         Accept(TokenKind.Colon);
                         TypeDenoter typeDenoter = ParseTypeDenoter();
@@ -83,7 +86,8 @@ namespace Triangle.Compiler.SyntacticAnalyzer
                     }
                 case TokenKind.Type:
                     {
-                        AcceptIt();
+                        // type declaration
+                        AcceptIt(); // take type token
                         Identifier identifier = ParseIdentifier();
                         Accept(TokenKind.Is);
                         TypeDenoter typeDenoter = ParseTypeDenoter();
@@ -98,6 +102,7 @@ namespace Triangle.Compiler.SyntacticAnalyzer
                         break;
                     }
             }
+            // returns null if there is a syntax error
             return declaration;
         }
     }

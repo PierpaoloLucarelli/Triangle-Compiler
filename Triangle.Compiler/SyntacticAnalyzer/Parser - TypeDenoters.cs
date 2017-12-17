@@ -37,7 +37,7 @@ namespace Triangle.Compiler.SyntacticAnalyzer
                     {
                         Identifier identifier = ParseIdentifier();
                         var typePosition = new SourcePosition(startLocation, _currentToken.Finish);
-                        typeDenoter = new SimpleTypeDenoter(identifier, typePosition); // ask this
+                        typeDenoter = new SimpleTypeDenoter(identifier, typePosition);
                         break;
                     }
 

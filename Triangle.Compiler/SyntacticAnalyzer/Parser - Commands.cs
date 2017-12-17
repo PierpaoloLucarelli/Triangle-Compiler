@@ -26,6 +26,8 @@ namespace Triangle.Compiler.SyntacticAnalyzer
         /// </throws>
         Command ParseCommand()
         {
+            // command is composed of single comand followed by other single comands
+            // seprated by a ;
             var startLocation = _currentToken.Start;
             var command = ParseSingleCommand();
             while (_currentToken.Kind == TokenKind.Semicolon)
@@ -33,6 +35,7 @@ namespace Triangle.Compiler.SyntacticAnalyzer
                 AcceptIt();
                 var command2 = ParseSingleCommand();
                 var commandPosition = new SourcePosition(startLocation, _currentToken.Finish);
+                // if there is more than one command, return sequential comand
                 command = new SequentialCommand(command, command2, commandPosition);
             }
             return command;
@@ -59,14 +62,16 @@ namespace Triangle.Compiler.SyntacticAnalyzer
                 case TokenKind.Identifier:
                     {
                         var identifier = ParseIdentifier();
+                        // call command
                         if (_currentToken.Kind == TokenKind.LeftParen)
                         {
-                            AcceptIt();
-                            var actuals = ParseActualParameterSequence();
+                            AcceptIt(); // take become token
+							var actuals = ParseActualParameterSequence();
                             Accept(TokenKind.RightParen);
                             var commandPosition = new SourcePosition(startLocation, _currentToken.Finish);
                             return new CallCommand(identifier, actuals, commandPosition);
                         }
+                        // assign command
                         else
                         {
                             var vname = ParseRestOfVname(identifier);
@@ -79,16 +84,16 @@ namespace Triangle.Compiler.SyntacticAnalyzer
 
                 case TokenKind.Begin:
                     {
-                        AcceptIt();
-                        var command = ParseCommand();
+                        AcceptIt(); // take begin token
+						var command = ParseCommand();
                         Accept(TokenKind.End);
                         return command;
                     }
-
                 case TokenKind.Let:
                     {
-                        AcceptIt();
-                        var declaration = ParseDeclaration();
+						// let command
+						AcceptIt(); // take let token
+						var declaration = ParseDeclaration();
                         Accept(TokenKind.In);
                         var command = ParseSingleCommand();
                         var commandPosition = new SourcePosition(startLocation, _currentToken.Finish);
@@ -97,8 +102,9 @@ namespace Triangle.Compiler.SyntacticAnalyzer
 
                 case TokenKind.If:
                     {
-                        AcceptIt();
-                        var expression = ParseExpression();
+                        // If command
+                        AcceptIt(); // take if token
+						var expression = ParseExpression();
                         Accept(TokenKind.Then);
                         var command1 = ParseSingleCommand();
                         Accept(TokenKind.Else);
@@ -109,15 +115,16 @@ namespace Triangle.Compiler.SyntacticAnalyzer
 
                 case TokenKind.While:
                     {
-                        AcceptIt();
-                        var expression = ParseExpression();
+                        // While command
+                        AcceptIt(); // take while token
+						var expression = ParseExpression();
                         Accept(TokenKind.Do);
                         var command = ParseSingleCommand();
                         var commandPosition = new SourcePosition(startLocation, _currentToken.Finish);
                         return new WhileCommand(expression, command, commandPosition);
                     }
-
-                case TokenKind.Semicolon:
+				// fix the trailing else problem    
+				case TokenKind.Semicolon:
                 case TokenKind.End:
                 case TokenKind.Else:
                 case TokenKind.In:
@@ -130,7 +137,6 @@ namespace Triangle.Compiler.SyntacticAnalyzer
                 default:
                     RaiseSyntacticError("\"%\" cannot start a command", _currentToken);
                     return null;
-
             }
         }
     }

@@ -26,6 +26,7 @@ namespace Triangle.Compiler.SyntacticAnalyzer
         {
             try
             {
+                // parse the program
                 _tokens.MoveNext();
                 _currentToken = _tokens.Current;
                 var startLocation = _currentToken.Start;

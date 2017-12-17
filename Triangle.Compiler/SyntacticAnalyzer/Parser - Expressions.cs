@@ -39,7 +39,8 @@ namespace Triangle.Compiler.SyntacticAnalyzer
 
                 case TokenKind.Let:
                     {
-                        AcceptIt();
+                        // let expression
+                        AcceptIt(); // take let token
                         Declaration declaration = ParseDeclaration();
                         Accept(TokenKind.In);
                         Expression exp = ParseExpression();
@@ -50,7 +51,8 @@ namespace Triangle.Compiler.SyntacticAnalyzer
 
                 case TokenKind.If:
                     {
-                        AcceptIt();
+                        // if Expression
+                        AcceptIt(); // take if token
                         Expression exp1 = ParseExpression();
                         Accept(TokenKind.Then);
                         Expression exp2 = ParseExpression();
@@ -63,11 +65,13 @@ namespace Triangle.Compiler.SyntacticAnalyzer
 
                 default:
                     {
+                        // secondary expression
                         expression = ParseSecondaryExpression();
                         break;
                     }
             }
-            return expression;
+			// returns null if there is a syntax error
+			return expression;
         }
 
         /// <summary>
@@ -85,7 +89,8 @@ namespace Triangle.Compiler.SyntacticAnalyzer
             Expression expression = null;
             var startLocation = _currentToken.Start;
             expression = ParsePrimaryExpression();
-            while (_currentToken.Kind == TokenKind.Operator)
+			// expression can be followed by an operator and another expression
+			while (_currentToken.Kind == TokenKind.Operator)
             {
                 Operator op = ParseOperator();
                 Expression exp2 = ParsePrimaryExpression();
@@ -112,9 +117,9 @@ namespace Triangle.Compiler.SyntacticAnalyzer
             var startlocation = _currentToken.Start;
             switch (_currentToken.Kind)
             {
-
                 case TokenKind.IntLiteral:
                     {
+                        // Integer expression
                         IntegerLiteral intLit = ParseIntegerLiteral();
                         var expressionPos = new SourcePosition(startlocation, _currentToken.Finish);
                         expression = new IntegerExpression(intLit, expressionPos);
@@ -123,6 +128,7 @@ namespace Triangle.Compiler.SyntacticAnalyzer
 
                 case TokenKind.CharLiteral:
                     {
+                        // char expression
                         CharacterLiteral charLit = ParseCharacterLiteral();
                         var expressionPos = new SourcePosition(startlocation, _currentToken.Finish);
                         expression = new CharacterExpression(charLit, expressionPos);
@@ -132,10 +138,11 @@ namespace Triangle.Compiler.SyntacticAnalyzer
 
                 case TokenKind.Identifier:
                     {
+                        // call expression if we find left paren, or vname exp
                         Identifier identifier = ParseIdentifier();
                         if (_currentToken.Kind == TokenKind.LeftParen)
                         {
-                            AcceptIt();
+                            AcceptIt(); // take left paren
                             ActualParameterSequence actualParamSeq = ParseActualParameterSequence();
                             Accept(TokenKind.RightParen);
                             var expressionPos = new SourcePosition(startlocation, _currentToken.Finish);
@@ -153,6 +160,7 @@ namespace Triangle.Compiler.SyntacticAnalyzer
 
                 case TokenKind.Operator:
                     {
+                        // unary expression
                         Operator op = ParseOperator();
                         Expression exp = ParsePrimaryExpression();
                         var expressionPos = new SourcePosition(startlocation, _currentToken.Finish);
@@ -162,7 +170,8 @@ namespace Triangle.Compiler.SyntacticAnalyzer
 
                 case TokenKind.LeftParen:
                     {
-                        AcceptIt();
+                        // an expression surrounded by brakets
+                        AcceptIt(); // take left paren
                         expression = ParseExpression();
                         Accept(TokenKind.RightParen);
                         break;
@@ -174,7 +183,8 @@ namespace Triangle.Compiler.SyntacticAnalyzer
                         break;
                     }
             }
-            return expression;
+			// returns null if there is an eror
+			return expression;
         }
 
     }

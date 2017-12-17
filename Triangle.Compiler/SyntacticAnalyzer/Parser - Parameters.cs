@@ -35,6 +35,7 @@ namespace Triangle.Compiler.SyntacticAnalyzer
          */
         ActualParameterSequence  ParseActualParameterSequence()
         {
+            // empty param seq if there is a right paren, otherwise: proper param sequence
             ActualParameterSequence ActualParamSeq = null;
             var startLocation = _currentToken.Position.Start;
             if (_currentToken.Kind == TokenKind.RightParen)
@@ -60,12 +61,14 @@ namespace Triangle.Compiler.SyntacticAnalyzer
          */
         ActualParameterSequence ParseProperActualParameterSequence()
         {
+            // if there is a more than one parameter, Multiple actual param seq
+            // else single param sequence.
             ActualParameterSequence properParamSeq = null;
             var startLocation = _currentToken.Position.Start;
             ActualParameter actualParam = ParseActualParameter();
-            if (_currentToken.Kind == TokenKind.Comma)
+            if (_currentToken.Kind == TokenKind.Comma) // parameters seprarated by a comma
             {
-                AcceptIt();
+                AcceptIt(); // take the comma
                 ActualParameterSequence actualParamSeq = ParseProperActualParameterSequence();
                 var actualsPosition = new SourcePosition(startLocation, _currentToken.Position.Finish);
                 properParamSeq = new MultipleActualParameterSequence(actualParam, actualParamSeq, actualsPosition);
@@ -94,7 +97,7 @@ namespace Triangle.Compiler.SyntacticAnalyzer
             var startLocation = _currentToken.Position.Start;
             switch (_currentToken.Kind)
             {
-
+                // all cases for an expression
                 case TokenKind.Identifier:
                 case TokenKind.IntLiteral:
                 case TokenKind.CharLiteral:
@@ -113,6 +116,7 @@ namespace Triangle.Compiler.SyntacticAnalyzer
 
                 case TokenKind.Var:
                     {
+                        // vaname parameter
                         AcceptIt();
                         Vname vname = ParseVname();
                         var actualPosition = new SourcePosition(startLocation, _currentToken.Position.Finish);
@@ -126,7 +130,8 @@ namespace Triangle.Compiler.SyntacticAnalyzer
                         break;
                     }
             }
-            return actualParam;
+			// returns null if there is an eror
+			return actualParam;
         }
     }
 }
