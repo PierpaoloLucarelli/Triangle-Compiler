@@ -1,4 +1,7 @@
-using System;
+/*
+ * Pierpaolo Lucarelli - 1400571 
+ * CM4106 Languages and comilers - Final compiler
+*/
 using System.Collections.Generic;
 using System.Linq;
 

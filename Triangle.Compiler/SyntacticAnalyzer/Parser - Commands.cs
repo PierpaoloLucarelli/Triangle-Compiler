@@ -1,6 +1,8 @@
+/*
+ * Pierpaolo Lucarelli - 1400571 
+ * CM4106 Languages and comilers - Final compiler
+*/
 using Triangle.Compiler.SyntaxTrees.Commands;
-using Triangle.Compiler.SyntaxTrees.Declarations;
-using Triangle.Compiler.SyntaxTrees.Expressions;
 
 namespace Triangle.Compiler.SyntacticAnalyzer
 {

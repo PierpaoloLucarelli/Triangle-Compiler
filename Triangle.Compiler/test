@@ -1,0 +1,21 @@
+echo "running all tests"
+
+echo 'Running pass tests'
+
+if dotnet run tests/programs/pass/working.tri | grep -q 'Compilation was successful.'; then
+  echo "Test 1 pass: No compilation errors"
+else
+	echo 'Test 1 Should have passed but failed'
+fi
+
+if dotnet run tests/programs/pass/scopeworking2.tri | grep -q 'Compilation was successful.'; then
+  echo "Test 2 pass: No compilation errors"
+else
+	echo 'Test 2 Should have passed but failed'
+fi
+
+if dotnet run tests/programs/pass/workingscope.tri | grep -q 'Compilation was successful.'; then
+  echo "Test 3 pass: No compilation errors"
+else
+	echo 'Test 3 Should have passed but failed'
+fi
