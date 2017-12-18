@@ -1,10 +1,25 @@
 ﻿<Properties StartupConfiguration="{FCB0186D-7507-4096-8496-3C238677E156}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Triangle.Compiler/ContextualAnalyzer/Checker - Declarations.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Triangle.Compiler/ErrorReporter.cs">
     <Files>
-      <File FileName="Triangle.Compiler/ContextualAnalyzer/Checker - BuiltIn.cs" Line="1" Column="1" />
-      <File FileName="Triangle.Compiler/ContextualAnalyzer/Checker - Commands.cs" Line="1" Column="1" />
-      <File FileName="Triangle.Compiler/ContextualAnalyzer/Checker - Common.cs" Line="1" Column="1" />
-      <File FileName="Triangle.Compiler/ContextualAnalyzer/Checker - Declarations.cs" Line="36" Column="44" />
+      <File FileName="Triangle.Compiler/ContextualAnalyzer/Checker - BuiltIn.cs" Line="1" Column="12" />
+      <File FileName="Triangle.Compiler/ContextualAnalyzer/Checker - Commands.cs" Line="16" Column="81" />
+      <File FileName="Triangle.Compiler/ContextualAnalyzer/Checker - Common.cs" Line="38" Column="63" />
+      <File FileName="Triangle.Compiler/ContextualAnalyzer/Checker - Declarations.cs" Line="20" Column="25" />
+      <File FileName="Triangle.Compiler/Compiler.cs" Line="80" Column="5" />
+      <File FileName="Triangle.Compiler/ContextualAnalyzer/Checker - Programs.cs" Line="1" Column="5" />
+      <File FileName="Triangle.Compiler/tests/programs/fail/scoperr.tri" Line="1" Column="1" />
+      <File FileName="Triangle.Compiler/tests/programs/fail/undef.tri" Line="16" Column="12" />
+      <File FileName="Triangle.Compiler/ContextualAnalyzer/Checker - Vnames.cs" Line="1" Column="1" />
+      <File FileName="Triangle.Compiler/ContextualAnalyzer/Checker - Expressions.cs" Line="14" Column="16" />
+      <File FileName="Triangle.Compiler/ContextualAnalyzer/Checker - Parameters.cs" Line="27" Column="56" />
+      <File FileName="Triangle.Compiler/ContextualAnalyzer/Checker - Terminals.cs" Line="8" Column="67" />
+      <File FileName="Triangle.Compiler/ContextualAnalyzer/Checker - TypeDenoters.cs" Line="46" Column="76" />
+      <File FileName="Triangle.Compiler/ContextualAnalyzer/IdentificationTable.cs" Line="54" Column="86" />
+      <File FileName="Triangle.Compiler/ErrorReporter.cs" Line="58" Column="2" />
+      <File FileName="Triangle.Compiler/StreamErrorReporter.cs" Line="31" Column="10" />
+      <File FileName="Triangle.Compiler/SyntacticAnalyzer/Parser - Common.cs" Line="43" Column="15" />
+      <File FileName="Triangle.Compiler/SyntacticAnalyzer/Parser - Parameters.cs" Line="1" Column="1" />
+      <File FileName="Triangle.Compiler/StandardEnvironment.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

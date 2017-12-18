@@ -24,7 +24,7 @@ namespace Triangle.Compiler.ContextualAnalyzer
 
         // Reports that the identifier or operator used at a leaf of the AST
         // has not been declared.
-
+       
         void ReportUndeclaredOrError(Declaration binding, Terminal leaf, string message)
         {
             if (binding == null)
@@ -35,6 +35,7 @@ namespace Triangle.Compiler.ContextualAnalyzer
             {
                 ReportError(message, leaf);
             }
+            System.Console.WriteLine(_errorReporter.ErrorCount);
         }
 
         void ReportError(string message, Terminal ast)

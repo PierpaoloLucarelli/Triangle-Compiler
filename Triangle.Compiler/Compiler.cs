@@ -2,6 +2,7 @@
  * Pierpaolo Lucarelli - 1400571 
  * CM4106 Languages and comilers - Final compiler
 */
+using System;
 using Triangle.Compiler.CodeGenerator;
 using Triangle.Compiler.ContextualAnalyzer;
 using Triangle.Compiler.SyntacticAnalyzer;
@@ -56,7 +57,7 @@ namespace Triangle.Compiler
         Compiler(string sourceFileName)
         {
             _source = new SourceFile(sourceFileName);
-            _scanner = new Scanner(_source); //.EnableDebugging();
+            _scanner = new Scanner(_source);//.EnableDebugging();
             _parser = new Parser(_scanner, ErrorReporter);
             _checker = new Checker(ErrorReporter);
             _encoder = new Encoder(ErrorReporter);
@@ -89,15 +90,15 @@ namespace Triangle.Compiler
             var program = _parser.ParseProgram();
             if (ErrorReporter.HasErrors)
             {
+                
                 ErrorReporter.ReportMessage("Compilation was unsuccessful.");
                 return false;
             }
-            System.Console.WriteLine(program);
 
             // 2nd pass
             ErrorReporter.ReportMessage("Contextual analysis");
             _checker.Check(program);
-
+            Console.WriteLine(ErrorReporter.ErrorCount);
             if (ErrorReporter.HasErrors)
             {
                 ErrorReporter.ReportMessage("Compilation was unsuccesful");
