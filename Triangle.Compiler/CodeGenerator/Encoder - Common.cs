@@ -12,9 +12,9 @@ namespace Triangle.Compiler.CodeGenerator
 
         Emitter _emitter;
 
-        public Encoder(ErrorReporter errorReporter)
+        public Encoder()
         {
-            _errorReporter = errorReporter;
+            _errorReporter = StreamErrorReporter.Instance;
             _emitter = new Emitter(_errorReporter);
             ElaborateStdEnvironment();
         }

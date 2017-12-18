@@ -22,7 +22,7 @@ namespace Triangle.Compiler
         /// <summary>
         /// The error reporter.
         /// </summary>
-        static ErrorReporter ErrorReporter => new StreamErrorReporter();
+        ErrorReporter ErrorReporter = StreamErrorReporter.Instance;
 
         /// <summary>
         /// The source file to compile.
@@ -59,8 +59,8 @@ namespace Triangle.Compiler
             _source = new SourceFile(sourceFileName);
             _scanner = new Scanner(_source);//.EnableDebugging();
             _parser = new Parser(_scanner, ErrorReporter);
-            _checker = new Checker(ErrorReporter);
-            _encoder = new Encoder(ErrorReporter);
+            _checker = new Checker();
+            _encoder = new Encoder();
         }
 
         /// <summary>
@@ -90,18 +90,16 @@ namespace Triangle.Compiler
             var program = _parser.ParseProgram();
             if (ErrorReporter.HasErrors)
             {
-                
-                ErrorReporter.ReportMessage("Compilation was unsuccessful.");
+                ErrorReporter.ReportMessage("Compilation was unsuccessful: Syntactic analysis failed");
                 return false;
             }
 
             // 2nd pass
             ErrorReporter.ReportMessage("Contextual analysis");
             _checker.Check(program);
-            Console.WriteLine(ErrorReporter.ErrorCount);
             if (ErrorReporter.HasErrors)
             {
-                ErrorReporter.ReportMessage("Compilation was unsuccesful");
+                ErrorReporter.ReportMessage("Compilation was unsuccessful: Contextual analysis failed");
                 return false;
             }
 
@@ -110,17 +108,16 @@ namespace Triangle.Compiler
 			_encoder.EncodeRun(program);
 			if (ErrorReporter.HasErrors)
 			{
-				ErrorReporter.ReportMessage("Compilation was unsuccessful.");
+                ErrorReporter.ReportMessage("Compilation was unsuccessful: Code Generation failed.");
 				return false;
 			}
 
 			// finally save the object code
 			_encoder.SaveObjectProgram(ObjectFileName);
 
-
-
-
+            Console.ForegroundColor = ConsoleColor.Green;
 			ErrorReporter.ReportMessage("Compilation was successful.");
+            Console.ResetColor();
             return true;
         }
 
@@ -137,7 +134,7 @@ namespace Triangle.Compiler
 
             if (args.Length != 1)
             {
-                ErrorReporter.ReportMessage("Usage: Compiler.exe source");
+                //ErrorReporter.ReportMessage("Usage: Compiler.exe source");
                 return;
             }
 

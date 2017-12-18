@@ -10,9 +10,9 @@ namespace Triangle.Compiler.ContextualAnalyzer
 
         IdentificationTable _idTable;
 
-        public Checker(ErrorReporter errorReporter)
+        public Checker()
         {
-            _errorReporter = errorReporter;
+            _errorReporter = StreamErrorReporter.Instance;
             _idTable = new IdentificationTable();
             EstablishStdEnvironment();
         }
@@ -35,7 +35,6 @@ namespace Triangle.Compiler.ContextualAnalyzer
             {
                 ReportError(message, leaf);
             }
-            System.Console.WriteLine(_errorReporter.ErrorCount);
         }
 
         void ReportError(string message, Terminal ast)
