@@ -6,6 +6,7 @@ namespace Triangle.Compiler.CodeGenerator.Entities
 	public class UnknownValue : RuntimeEntity, IFetchableEntity
 	{
 
+		// entities with unknown value
 		readonly ObjectAddress _address;
 
 		public UnknownValue(int size, int level, int displacement)
@@ -20,6 +21,8 @@ namespace Triangle.Compiler.CodeGenerator.Entities
 		{
 		}
 
+        // we dont know the value so we can only work with the address.
+        // load the value at an address onto the stack
 		public void EncodeFetch(Emitter emitter, Frame frame, int size, Vname vname)
 		{
 			if (vname.IsIndexed)
