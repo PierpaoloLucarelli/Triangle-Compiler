@@ -24,6 +24,12 @@ else
 	echo "${RED}Test 3 Should have passed but failed"
 fi
 
+if dotnet run tests/programs/pass/unknownval.tri | grep -q 'Compilation was successful.'; then
+  echo "${GREEN}Test 3 pass: No compilation errors"
+else
+    echo "${RED}Test 3 Should have passed but failed"
+fi
+
 echo "${NC}Running fail tests"
 
 if dotnet run tests/programs/fail/charfail.tri | grep -q 'Compilation was unsuccessful'; then
