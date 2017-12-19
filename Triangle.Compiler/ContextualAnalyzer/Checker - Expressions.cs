@@ -88,6 +88,7 @@ namespace Triangle.Compiler.ContextualAnalyzer
             _idTable.OpenScope();
             ast.Declaration.Visit(this);
             ast.Expression.Visit(this);
+            _idTable.CloseScope();
             return ast.Type;
         }
 

@@ -25,27 +25,27 @@ else
 fi
 
 if dotnet run tests/programs/pass/unknownval.tri | grep -q 'Compilation was successful.'; then
-  echo "${GREEN}Test 3 pass: No compilation errors"
+  echo "${GREEN}Test 4 pass: No compilation errors"
 else
-    echo "${RED}Test 3 Should have passed but failed"
+    echo "${RED}Test 4 Should have passed but failed"
 fi
 
 echo "${NC}Running fail tests"
 
 if dotnet run tests/programs/fail/charfail.tri | grep -q 'Compilation was unsuccessful'; then
-  echo "${GREEN}Test 4 pass: Compiler found the error"
+  echo "${GREEN}Test 5 pass: Compiler found the error"
 else
-	echo "${RED}Test 4 Should have found an erorr but didn't"
+	echo "${RED}Test 5 Should have found an erorr but didn't"
 fi
 
 if dotnet run tests/programs/fail/scoperr.tri | grep -q 'Compilation was unsuccessful'; then
-  echo "${GREEN}Test 4 pass: Compiler found the error"
+  echo "${GREEN}Test 6 pass: Compiler found the error"
 else
-	echo "${RED}Test 4 Should have found an erorr but didn't"
+	echo "${RED}Test 6 Should have found an erorr but didn't"
 fi
 
 if dotnet run tests/programs/fail/undef.tri | grep -q 'Compilation was unsuccessful'; then
-  echo "${GREEN}Test 4 pass: Compiler found the error"
+  echo "${GREEN}Test 7 pass: Compiler found the error"
 else
-	echo "${RED}Test 4 Should have found an erorr but didn't"
+	echo "${RED}Test 7 Should have found an erorr but didn't"
 fi
