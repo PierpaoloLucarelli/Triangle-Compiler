@@ -11,7 +11,7 @@ namespace Triangle.Compiler.ContextualAnalyzer
         {
             ast.Expression.Visit(this);
             _idTable.Enter(ast.Identifier, ast);
-			CheckAndReportError(!ast.Duplicated, "identifier \"%\" alreadydeclared",ast.Identifier, ast);
+			CheckAndReportError(!ast.Duplicated, "identifier \"%\" already declared",ast.Identifier, ast);
             return null;
         }
 
@@ -20,7 +20,7 @@ namespace Triangle.Compiler.ContextualAnalyzer
 			//  Visit declaration and add the type to the declaration
 			ast.Type = ast.Type.Visit(this);
             _idTable.Enter(ast.Identifier, ast);
-            CheckAndReportError(!ast.Duplicated, "identifier \"%\" alreadydeclared", ast.Identifier, ast);
+            CheckAndReportError(!ast.Duplicated, "identifier \"%\" already declared", ast.Identifier, ast);
 			return null;
 		}
 
