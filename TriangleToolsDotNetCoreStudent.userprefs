@@ -1,25 +1,35 @@
 ﻿<Properties StartupConfiguration="{FCB0186D-7507-4096-8496-3C238677E156}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Triangle.Compiler/SyntacticAnalyzer/Parser - Commands.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Triangle.Compiler/test">
     <Files>
       <File FileName="Triangle.Compiler/SyntaxTrees/Visitors/IProgramVisitor.cs" Line="5" Column="17" />
       <File FileName="Triangle.Compiler/CodeGenerator/Encoder - Commands.cs" Line="1" Column="1" />
       <File FileName="Triangle.Compiler/CodeGenerator/Encoder - Common.cs" Line="24" Column="19" />
-      <File FileName="Triangle.Compiler/CodeGenerator/Entities/KnownValue.cs" Line="8" Column="9" />
-      <File FileName="Triangle.Compiler/CodeGenerator/Entities/KnownAddress.cs" Line="33" Column="42" />
-      <File FileName="Triangle.Compiler/CodeGenerator/Entities/KnownProcedure.cs" Line="27" Column="9" />
-      <File FileName="Triangle.Compiler/CodeGenerator/Entities/UnknownAddress.cs" Line="20" Column="2" />
+      <File FileName="Triangle.Compiler/CodeGenerator/Entities/KnownValue.cs" Line="5" Column="1" />
+      <File FileName="Triangle.Compiler/CodeGenerator/Entities/KnownAddress.cs" Line="5" Column="1" />
+      <File FileName="Triangle.Compiler/CodeGenerator/Entities/KnownProcedure.cs" Line="5" Column="1" />
+      <File FileName="Triangle.Compiler/CodeGenerator/Entities/UnknownAddress.cs" Line="5" Column="1" />
       <File FileName="Triangle.Compiler/CodeGenerator/Entities/UnknownProcedure.cs" Line="12" Column="4" />
-      <File FileName="Triangle.Compiler/CodeGenerator/Entities/UnknownValue.cs" Line="31" Column="5" />
+      <File FileName="Triangle.Compiler/CodeGenerator/Entities/UnknownValue.cs" Line="5" Column="1" />
       <File FileName="Triangle.Compiler/tests/programs/pass/working.tri" Line="1" Column="1" />
       <File FileName="Triangle.Compiler/SyntacticAnalyzer/Parser - Declarations.cs" Line="1" Column="1" />
       <File FileName="Triangle.Compiler/SyntacticAnalyzer/Parser - Expressions.cs" Line="1" Column="1" />
       <File FileName="Triangle.Compiler/SyntacticAnalyzer/Parser - Programs.cs" Line="1" Column="1" />
       <File FileName="Triangle.Compiler/SyntacticAnalyzer/Parser - Terminals.cs" Line="1" Column="1" />
       <File FileName="Triangle.Compiler/SyntacticAnalyzer/Parser - TypeDenoters.cs" Line="1" Column="1" />
-      <File FileName="Triangle.Compiler/Compiler.cs" Line="65" Column="33" />
-      <File FileName="Triangle.Compiler/SyntacticAnalyzer/Parser - Common.cs" Line="1" Column="1" />
+      <File FileName="Triangle.Compiler/Compiler.cs" Line="143" Column="14" />
+      <File FileName="Triangle.Compiler/SyntacticAnalyzer/Parser - Common.cs" Line="124" Column="22" />
       <File FileName="Triangle.Compiler/ContextualAnalyzer/Checker - Common.cs" Line="15" Column="59" />
-      <File FileName="Triangle.Compiler/SyntacticAnalyzer/Parser - Commands.cs" Line="1" Column="1" />
+      <File FileName="Triangle.Compiler/SyntacticAnalyzer/Parser - Commands.cs" Line="34" Column="14" />
+      <File FileName="Triangle.Compiler/SyntaxTrees/Vnames/Vname.cs" Line="16" Column="30" />
+      <File FileName="Triangle.Compiler/CodeGenerator/Emitter.cs" Line="1" Column="1" />
+      <File FileName="Triangle.Compiler/CodeGenerator/Encoder - Expressions.cs" Line="1" Column="1" />
+      <File FileName="Triangle.Compiler/ContextualAnalyzer/Checker - Expressions.cs" Line="6" Column="49" />
+      <File FileName="Triangle.Compiler/ContextualAnalyzer/Checker - Declarations.cs" Line="1" Column="1" />
+      <File FileName="Triangle.Compiler/ContextualAnalyzer/Checker - Parameters.cs" Line="1" Column="1" />
+      <File FileName="Triangle.Compiler/ContextualAnalyzer/IdentificationTable.cs" Line="5" Column="1" />
+      <File FileName="Triangle.Compiler/ContextualAnalyzer/Checker - Vnames.cs" Line="1" Column="1" />
+      <File FileName="Triangle.Compiler/INFO_TO_RUN.txt" Line="7" Column="1" />
+      <File FileName="Triangle.Compiler/test" Line="53" Column="43" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

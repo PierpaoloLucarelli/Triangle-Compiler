@@ -23,7 +23,7 @@ namespace Triangle.Compiler
         /// The error reporter.
         /// </summary>
         ///
-        // changed error reportr to use the singleton design pattern
+        // changed error reporter to use the singleton design pattern
         // this makes sure tht only one instance of the err reporter is shared between 
         // the compiler parts
         ErrorReporter ErrorReporter = StreamErrorReporter.Instance;
@@ -62,9 +62,9 @@ namespace Triangle.Compiler
         {
             _source = new SourceFile(sourceFileName);
             _scanner = new Scanner(_source);//.EnableDebugging();
-            _parser = new Parser(_scanner); // err reporter is passes statically
-            _checker = new Checker(); // err reporter is passes statically
-			_encoder = new Encoder(); // err reporter is passes statically
+            _parser = new Parser(_scanner); // err reporter is passed statically
+            _checker = new Checker(); // err reporter is passed statically
+			_encoder = new Encoder(); // err reporter is passed statically
 		}
 
         /// <summary>
@@ -138,7 +138,7 @@ namespace Triangle.Compiler
 
             if (args.Length != 1)
             {
-                //ErrorReporter.ReportMessage("Usage: Compiler.exe source");
+                Console.WriteLine("Usage: dotnet run filename");
                 return;
             }
 

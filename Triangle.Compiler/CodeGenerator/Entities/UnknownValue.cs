@@ -1,3 +1,7 @@
+/*
+ * Pierpaolo Lucarelli - 1400571 
+ * CM4106 Languages and comilers - Final compiler
+*/
 using Triangle.AbstractMachine;
 using Triangle.Compiler.SyntaxTrees.Vnames;
 
@@ -27,8 +31,10 @@ namespace Triangle.Compiler.CodeGenerator.Entities
 		{
 			if (vname.IsIndexed)
 			{
+				emitter.Emit(OpCode.LOAD, frame.DisplayRegister(_address), _address.Displacement);
+            } else{
 				emitter.Emit(OpCode.LOAD, size, frame.DisplayRegister(_address), _address.Displacement);
-			}
+            }
 		}
 	}
 }

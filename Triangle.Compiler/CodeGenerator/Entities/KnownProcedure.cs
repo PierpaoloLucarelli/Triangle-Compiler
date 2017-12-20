@@ -1,3 +1,7 @@
+/*
+ * Pierpaolo Lucarelli - 1400571 
+ * CM4106 Languages and comilers - Final compiler
+*/
 using Triangle.AbstractMachine;
 
 namespace Triangle.Compiler.CodeGenerator.Entities

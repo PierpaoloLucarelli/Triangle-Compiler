@@ -1,3 +1,7 @@
+/*
+ * Pierpaolo Lucarelli - 1400571 
+ * CM4106 Languages and comilers - Final compiler
+*/
 using Triangle.AbstractMachine;
 using Triangle.Compiler.SyntaxTrees.Vnames;
 
@@ -21,11 +25,11 @@ namespace Triangle.Compiler.CodeGenerator.Entities
 		}
 
         // push on object to the top of the stack, then use the address to fetch an object.
-        // then oush the object ontop of the stack 
+        // then push the object ontop of the stack 
 		public override void EncodeFetch(Emitter emitter, Frame frame, int size, Vname vname)
 		{
 			emitter.Emit(OpCode.LOAD, Machine.AddressSize, frame.DisplayRegister(_address));
-			emitter.Emit(OpCode.STORE, size);
+            emitter.Emit(OpCode.LOADI, size);
 		}
 
         // load an address on top of the stack 

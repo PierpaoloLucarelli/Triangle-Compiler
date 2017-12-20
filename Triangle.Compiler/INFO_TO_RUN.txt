@@ -1,2 +1,6 @@
 Hello John, I have changed the dotnet version of the project to version2 so you might need to chahnge the version back to 1.
 Thank you
+
+Also there is a shell script that you can run to run all of the test programs:
+chmod +x ./run
+./run
