@@ -18,10 +18,10 @@ namespace Triangle.Compiler.SyntacticAnalyzer
 
         IEnumerator<Token> _tokens;
 
-        public Parser(Scanner scanner, ErrorReporter errorReporter)
+        public Parser(Scanner scanner)
         {
             _scanner = scanner;
-            _errorReporter = errorReporter;
+            _errorReporter = StreamErrorReporter.Instance;
             _previousLocation = Location.Empty;
             _tokens = _scanner.GetEnumerator();
         }
